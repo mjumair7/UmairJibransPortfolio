@@ -83,9 +83,17 @@ h2 {
 
 .showcase-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     padding: 0 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .showcase-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .showcase-item {

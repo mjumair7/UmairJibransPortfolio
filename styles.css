@@ -71,6 +71,16 @@ body {
     margin-bottom: 1rem;
 }
 
+.hero-content p {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.hero-content p:last-child {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
 section {
     padding: 5rem 2rem;
 }

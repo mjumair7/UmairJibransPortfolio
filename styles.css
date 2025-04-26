@@ -423,6 +423,7 @@ footer {
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 .skill-card {
@@ -436,6 +437,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 150px; /* Add fixed minimum height */
 }
 
 .skill-card:hover {
@@ -458,15 +460,35 @@ footer {
     font-size: 1.1rem;
 }
 
-@media screen and (max-width: 768px) {
+/* Add more specific media queries for better responsiveness */
+@media screen and (max-width: 1200px) {
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
     .skills-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width: 480px) {
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .skill-card {
+        padding: 1.5rem;
+        min-height: 120px;
     }
 }
 

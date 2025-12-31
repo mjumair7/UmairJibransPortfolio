@@ -1,45 +1,88 @@
-// Initialize AOS (Animate On Scroll)
-AOS.init({
-    duration: 800,
-    easing: 'ease',
-    once: true
-});
+// AOS defaults
+AOS.init({ duration: 800, easing: 'ease', once: true });
 
-// Mobile menu functionality
+// Mobile menu
 const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
-const navLinks = document.querySelectorAll('.nav-links li');
-
+const navLinks = document.querySelector('.nav-links');
 burger.addEventListener('click', () => {
-    nav.classList.toggle('nav-active');
-    
-    navLinks.forEach((link, index) => {
-        if (link.style.animation) {
-            link.style.animation = '';
-        } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-        }
-    });
-    
-    burger.classList.toggle('toggle');
+  const open = navLinks.style.display === 'flex';
+  navLinks.style.display = open ? 'none' : 'flex';
+  if (!open) {
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.gap = '0.2rem';
+    navLinks.style.position = 'absolute';
+    navLinks.style.right = '1rem';
+    navLinks.style.top = '60px';
+    navLinks.style.background = '#0e1422';
+    navLinks.style.border = '1px solid #1b2740';
+    navLinks.style.padding = '.5rem';
+    navLinks.style.borderRadius = '12px';
+  }
 });
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+  });
 });
 
-// Navbar background change on scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-    } else {
-        navbar.style.background = 'white';
+// Year
+document.getElementById('yy').textContent = new Date().getFullYear();
+
+// Intersection Observer reveal (staggered and unique)
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('on');
+      entry.target.style.transitionDelay = (i * 0.06) + 's';
+      io.unobserve(entry.target);
     }
+  });
+}, { threshold: .12 });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Subtle parallax on hero cards
+const tiltEls = document.querySelectorAll('.tilt');
+window.addEventListener('mousemove', (e) => {
+  tiltEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    const cx = r.left + r.width / 2; const cy = r.top + r.height / 2;
+    const dx = (e.clientX - cx) / r.width; const dy = (e.clientY - cy) / r.height;
+    el.style.transform = `rotateX(${(-dy * 6).toFixed(2)}deg) rotateY(${(dx * 6).toFixed(2)}deg)`;
+  });
+});
+
+// Skills — pulled from your resume
+const skills = [
+  { i: 'devicon-python-plain', t: 'Python' },
+  { i: 'devicon-c-plain', t: 'C' },
+  { i: 'devicon-cplusplus-plain', t: 'C++' },
+  { i: 'devicon-java-plain', t: 'Java' },
+  { i: 'devicon-javascript-plain', t: 'JavaScript' },
+  { i: 'devicon-typescript-plain', t: 'TypeScript' },
+  { i: 'devicon-postgresql-plain', t: 'SQL / PostgreSQL' },
+  { i: 'devicon-react-original', t: 'React / React Native' },
+  { i: 'devicon-nextjs-original', t: 'Next.js' },
+  { i: 'devicon-nodejs-plain', t: 'Node.js / Express' },
+  { i: 'devicon-prisma-original', t: 'Prisma' },
+  { i: 'devicon-tailwindcss-plain', t: 'TailwindCSS' },
+  { i: 'fa-solid fa-chart-line', t: 'Power BI / Tableau / Excel' },
+  { i: 'devicon-shopify-plain', t: 'Shopify' },
+  { i: 'fa-brands fa-stripe', t: 'Stripe Terminal API' },
+  { i: 'fa-solid fa-microchip', t: 'Arduino, UART, Timers/Interrupts' },
+  { i: 'fa-solid fa-tower-broadcast', t: '433 MHz ASK/OOK · RadioHead' },
+  { i: 'devicon-git-plain', t: 'Git / GitHub' },
+  { i: 'devicon-html5-plain', t: 'HTML5' },
+  { i: 'devicon-css3-plain', t: 'CSS3' }
+];
+
+const grid = document.getElementById('skillsGrid');
+skills.forEach(s => {
+  const div = document.createElement('div');
+  div.className = 'skill';
+  div.innerHTML = `<i class="${s.i}"></i><span>${s.t}</span>`;
+  grid.appendChild(div);
 });

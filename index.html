@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Umair Jibran — Portfolio</title>
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
   <!-- Icons & Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 
   <!-- Site Styles -->
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css?v=2"/>
 </head>
 <body>
   <!-- ================= NAV ================= -->
@@ -30,7 +35,7 @@
   <header class="hero">
     <div class="hero-inner container" data-aos="fade-up">
       <div class="hero-card tilt">
-        <p class="chip" style="margin-bottom:.4rem"><i class="fa-solid fa-microchip"></i> Computer Engineering @ YorkU</p>
+        <p class="chip"><i class="fa-solid fa-microchip"></i> Computer Engineering @ YorkU</p>
         <h1>Building useful things across software, data, and hardware.</h1>
         <p class="lead">Full-stack apps, embedded RF tools, web analytics, and payment integrations. I enjoy turning messy problems into simple, reliable systems.</p>
         <div class="quick-badges">
@@ -40,7 +45,7 @@
           <span class="chip"><i class="fa-brands fa-shopify"></i> Shopify</span>
         </div>
       </div>
-      <div class="hero-card" style="display:grid; gap:.8rem">
+      <div class="hero-card contact-cards">
         <div class="chip"><i class="fa-solid fa-location-dot"></i> Toronto, Canada</div>
         <div class="chip"><i class="fa-solid fa-envelope"></i> umairmohammed26@gmail.com</div>
         <a class="chip" href="https://www.linkedin.com/in/umair-jibran-87932a2a7/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
@@ -50,11 +55,10 @@
   </header>
 
   <!-- ================= EXPERIENCE ================= -->
-  <section id="experience" class="reveal">
+  <section id="experience" class="reveal section">
     <div class="container">
       <h2 class="section-title"><span class="bar"></span> Experience</h2>
       <p class="section-sub">Recent roles where I shipped real things and moved metrics.</p>
-
       <div class="experience-grid">
         <article class="exp-card" data-aos="fade-up">
           <div class="exp-head">
@@ -101,7 +105,7 @@
   </section>
 
   <!-- ================= PROJECTS ================= -->
-  <section id="projects" class="reveal">
+  <section id="projects" class="reveal section">
     <div class="container">
       <h2 class="section-title"><span class="bar"></span> Projects</h2>
       <p class="section-sub">A mix of full-stack, embedded/RF, analytics, and web integrations.</p>
@@ -127,7 +131,7 @@
 POST /api/sets { exerciseId, reps, weight }
   → validate() → db.set.create()
   → if weight > currentPR: db.pr.upsert({ value: weight })
-  → event("set_logged", { exerciseId }) // emits to chart stream
+  → event("set_logged", { exerciseId })
 
 // time-bucketed query (week)
 SELECT date_trunc('week', created_at) AS wk,
@@ -158,14 +162,12 @@ GROUP BY 1 ORDER BY 1;</code></pre>
 while(true){
   packet = { id, seq++, status, crc(packet) };
   radio_send(packet);
-  sleep_ms(250);           // low duty cycle
+  sleep_ms(250);
   if(voltage < THRESH) status = LOW_BATT;
 }
 
 // base station
-on_receive(pkt){
-  seen[pkt.id] = now();
-}
+on_receive(pkt){ seen[pkt.id] = now(); }
 
 if(now() - seen[id] > TIMEOUT){
   alarm("MISSING:", id);
@@ -214,7 +216,7 @@ for order in group_by_order(rows):
               <header><span class="lang">pseudo.js</span><span class="chip"><i class="fa-solid fa-shield-halved"></i> secure flow</span></header>
               <pre><code>// server
 POST /connection_token → stripe.terminal.connectionTokens.create()
-POST /intent { amount } → stripe.paymentIntents.create({capture_method:"automatic"})
+POST /intent { amount } → stripe.paymentIntents.create({ capture_method:"automatic" })
 
 // client
 const reader = await terminal.discoverAndConnect();
@@ -223,48 +225,28 @@ await terminal.processPayment(intent);</code></pre>
             </div>
           </div>
         </article>
-
-        <!-- Portfolio site -->
-        <article class="project" data-aos="fade-up" data-aos-delay="200">
-          <div class="visual">
-            <i class="fa-solid fa-globe"></i>
-            <span class="badge-ring"><i class="fa-solid fa-rocket"></i> Frontend</span>
-          </div>
-          <div class="content">
-            <h3>Portfolio Website</h3>
-            <div class="taglist">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">AOS</span>
-            </div>
-            <p><strong>What it does:</strong> Clean, fast, mobile-first portfolio demonstrating projects and skills.</p>
-            <p><strong>How I built it:</strong> Single-page architecture with custom scroll reveals, glass panels, and subtle parallax for depth.</p>
-            <div class="project-links" style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.8rem">
-              <a class="chip" href="https://mjumair7.github.io/UmairJibransPortfolio/" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
-              <a class="chip" href="https://github.com/mjumair7/UmairJibransPortfolio" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> Code</a>
-            </div>
-          </div>
-        </article>
       </div>
     </div>
   </section>
 
   <!-- ================= SKILLS ================= -->
-  <section id="skills" class="reveal">
+  <section id="skills" class="reveal section">
     <div class="container">
       <h2 class="section-title"><span class="bar"></span> Skills</h2>
       <p class="section-sub">Only the technical things I actually use.</p>
-      <div class="skills-grid" id="skillsGrid"><!-- populated by JS --></div>
+      <div class="skills-grid" id="skillsGrid"></div>
     </div>
   </section>
 
   <!-- ================= LINKEDIN ================= -->
-  <section id="linkedin" class="linkedin reveal">
+  <section id="linkedin" class="linkedin reveal section">
     <div class="container">
       <h2 class="section-title"><span class="bar"></span> Professional Profile</h2>
       <p class="section-sub">Let’s connect — always open to building useful products.</p>
       <div class="linkedin-card" data-aos="zoom-in">
         <div>
-          <p style="margin:.2rem 0 .6rem; color:#d6e3f7"><i class="fa-regular fa-user"></i> Mohammed Umair Jibran</p>
-          <p style="color:var(--muted)">Computer Engineering (BEng, 2028) · Dean’s Honor Roll · Gordon & Agnes Brash Award</p>
+          <p class="profile-name"><i class="fa-regular fa-user"></i> Mohammed Umair Jibran</p>
+          <p class="profile-sub">Computer Engineering (BEng, 2028) · Dean’s Honor Roll · Gordon & Agnes Brash Award</p>
         </div>
         <a href="https://www.linkedin.com/in/umair-jibran-87932a2a7/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i> View LinkedIn</a>
       </div>
@@ -277,6 +259,6 @@ await terminal.processPayment(intent);</code></pre>
 
   <!-- Libs + App -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

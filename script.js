@@ -1,4 +1,4 @@
-// AOS defaults
+// AOS
 AOS.init({ duration: 800, easing: 'ease', once: true });
 
 // Mobile menu
@@ -9,11 +9,11 @@ burger.addEventListener('click', () => {
   navLinks.style.display = open ? 'none' : 'flex';
   if (!open) {
     navLinks.style.flexDirection = 'column';
-    navLinks.style.gap = '0.2rem';
+    navLinks.style.gap = '0.25rem';
     navLinks.style.position = 'absolute';
-    navLinks.style.right = '1rem';
-    navLinks.style.top = '60px';
-    navLinks.style.background = '#0e1422';
+    navLinks.style.right = '0.75rem';
+    navLinks.style.top = 'calc(var(--nav-h) - 6px)';
+    navLinks.style.background = 'rgba(14,20,34,.95)';
     navLinks.style.border = '1px solid #1b2740';
     navLinks.style.padding = '.5rem';
     navLinks.style.borderRadius = '12px';
@@ -24,14 +24,16 @@ burger.addEventListener('click', () => {
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // collapse menu on mobile
+    if (window.innerWidth < 960) navLinks.style.display = 'none';
   });
 });
 
 // Year
 document.getElementById('yy').textContent = new Date().getFullYear();
 
-// Intersection Observer reveal (staggered and unique)
+// Reveal on scroll (unique stagger)
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -40,8 +42,7 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(entry.target);
     }
   });
-}, { threshold: .12 });
-
+}, { threshold: .14 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // Subtle parallax on hero cards
@@ -55,7 +56,7 @@ window.addEventListener('mousemove', (e) => {
   });
 });
 
-// Skills — pulled from your resume
+// Skills (icons + labels)
 const skills = [
   { i: 'devicon-python-plain', t: 'Python' },
   { i: 'devicon-c-plain', t: 'C' },

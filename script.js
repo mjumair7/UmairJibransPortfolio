@@ -138,6 +138,46 @@ document.querySelectorAll('[data-signal-node]').forEach(node => {
   });
 });
 
+
+// Field-notes section: active story + gentle scroll-driven photo movement.
+const momentStories = [...document.querySelectorAll('[data-moment]')];
+const momentCurrent = document.querySelector('[data-moment-current]');
+const momentsMeter = document.querySelector('[data-moments-meter]');
+if (momentStories.length) {
+  const momentObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const index = momentStories.indexOf(entry.target);
+      momentStories.forEach((story, i) => story.classList.toggle('is-current', i === index));
+      if (momentCurrent) momentCurrent.textContent = String(index + 1).padStart(2, '0');
+      if (momentsMeter) momentsMeter.style.width = `${((index + 1) / momentStories.length) * 100}%`;
+    });
+  }, { threshold: 0.48, rootMargin: '-15% 0px -28% 0px' });
+  momentStories.forEach(story => momentObserver.observe(story));
+}
+
+const parallaxFrames = [...document.querySelectorAll('[data-moment-parallax]')];
+let momentParallaxQueued = false;
+const updateMomentParallax = () => {
+  momentParallaxQueued = false;
+  if (reduceMotion) return;
+  parallaxFrames.forEach(frame => {
+    const rect = frame.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    const centerDelta = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+    const y = Math.max(-18, Math.min(18, centerDelta * -28));
+    frame.style.setProperty('--photo-y', `${y}px`);
+  });
+};
+const queueMomentParallax = () => {
+  if (momentParallaxQueued) return;
+  momentParallaxQueued = true;
+  requestAnimationFrame(updateMomentParallax);
+};
+window.addEventListener('scroll', queueMomentParallax, { passive: true });
+window.addEventListener('resize', queueMomentParallax);
+queueMomentParallax();
+
 // CAN-FD test bench demo
 for (const demo of document.querySelectorAll('[data-can-demo]')) {
   const state = demo.querySelector('[data-can-state]');

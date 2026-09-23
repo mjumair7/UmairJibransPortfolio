@@ -1,482 +1,392 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Umair Jibran | Computer Engineering Portfolio</title>
-  <meta name="description" content="The portfolio of Umair Jibran, a Computer Engineering student and Technology Manager building embedded systems, software tools, and technical programs." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Umair Jibran — Computer Engineering student and Technology Manager building embedded systems, software tools, and technical programs." />
   <meta name="author" content="Mohammed Umair Jibran" />
   <meta property="og:title" content="Umair Jibran | Computer Engineering Portfolio" />
   <meta property="og:description" content="Embedded systems, software tools, data work, and technical program leadership." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="public/og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Umair Jibran | Computer Engineering Portfolio" />
-  <meta name="twitter:description" content="Embedded systems, software tools, data work, and technical program leadership." />
-  <meta name="twitter:image" content="public/og.png" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
-
-  <!-- Icons & Libraries -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-
-  <!-- Site Styles -->
-  <link rel="stylesheet" href="styles.css?v=5"/>
+  <title>Umair Jibran | Computer Engineering Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- ================= NAV ================= -->
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
+  <div class="grain" aria-hidden="true"></div>
+
   <nav class="navbar" aria-label="Primary navigation">
-    <a class="logo" href="#top" aria-label="Umair Jibran, home" title="Mohammed Umair Jibran"><span class="badge">MJ</span><span>Umair Jibran</span></a>
+    <a class="logo magnetic" href="#top" aria-label="Umair Jibran — home">
+      <span class="logo-mark">UJ</span>
+      <span>Umair Jibran</span>
+    </a>
+    <button class="burger" type="button" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
     <ul class="nav-links">
-      <li><a href="#story" class="link-ghost">My story</a></li>
-      <li><a href="#experience" class="link-ghost">U+ timeline</a></li>
-      <li><a href="#projects" class="link-ghost">Selected work</a></li>
-      <li><a href="#contact" class="nav-cta">Let’s connect</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a class="nav-cta magnetic" href="#contact">Let’s talk</a></li>
     </ul>
-    <button class="burger" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
   </nav>
 
-  <!-- ================= HERO ================= -->
-  <header class="hero" id="top">
-    <div class="hero-grid container">
-      <div class="hero-copy" data-aos="fade-up">
-        <p class="eyebrow"><span class="status-dot"></span> Technology Manager · Computer Engineering</p>
-        <h1>Computer engineering, <em>from hardware to software.</em></h1>
-        <p class="lead">Computer Engineering at York. Technology Manager at U+. I build things I wish existed, fix systems that get in the way, and learn by making ideas real.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#projects">View projects <i class="fa-solid fa-arrow-down"></i></a>
-          <a class="button button-secondary" href="#experience">Experience</a>
+  <main>
+    <header class="hero" id="top">
+      <div class="hero-grid container">
+        <div class="hero-copy">
+          <p class="eyebrow reveal"><span class="status-dot"></span> Technology Manager · Computer Engineering</p>
+          <h1 class="hero-title" aria-label="I build across hardware, software, and the systems between them.">
+            <span class="title-line"><span>I build across</span></span>
+            <span class="title-line"><span>hardware, software,</span></span>
+            <span class="title-line accent-line"><span>and the systems between.</span></span>
+          </h1>
+          <p class="lead reveal">Computer Engineering at York. Technology Manager at U+. I like projects where code touches hardware, data has to become a decision, or a messy process needs to become a system.</p>
+          <div class="hero-actions reveal">
+            <a class="button button-primary magnetic" href="#projects">See the work <span>↓</span></a>
+            <a class="button button-quiet magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">Open resume <span>↗</span></a>
+          </div>
+          <div class="hero-footnote reveal">
+            <span class="mono">TORONTO / 2026</span>
+            <span>Scroll — there are things to play with.</span>
+          </div>
         </div>
-      </div>
 
-      <aside class="signal-card" aria-label="Umair's working style" data-aos="fade-left">
-        <div class="signal-topline"><span>CURRENT PROFILE</span><span class="mono">MJ / 2026</span></div>
-        <div class="signal-orbit" aria-hidden="true">
-          <span class="orbit-core">MJ</span>
-          <span class="orbit-node orbit-code">Code</span>
-          <span class="orbit-node orbit-hardware">Hardware</span>
-          <span class="orbit-node orbit-people">People</span>
-        </div>
-        <p class="signal-note">Current focus: technical leadership, embedded systems, and making complex projects easier to run.</p>
-        <div class="signal-readout">
-          <span><strong>$10K+</strong> fundraising supported</span>
-          <span><strong>200+</strong> volunteers coordinated</span>
-        </div>
-      </aside>
-    </div>
-
-    <div class="ticker" aria-label="Areas of practice">
-      <div class="ticker-track">
-        <span>C / C++</span><i></i><span>Embedded systems</span><i></i><span>Product software</span><i></i><span>Data &amp; dashboards</span><i></i><span>Program delivery</span><i></i><span>Technical leadership</span><i></i>
-        <span aria-hidden="true">C / C++</span><i aria-hidden="true"></i><span aria-hidden="true">Embedded systems</span><i aria-hidden="true"></i><span aria-hidden="true">Product software</span><i aria-hidden="true"></i><span aria-hidden="true">Data &amp; dashboards</span><i aria-hidden="true"></i><span aria-hidden="true">Program delivery</span><i aria-hidden="true"></i><span aria-hidden="true">Technical leadership</span><i aria-hidden="true"></i>
-      </div>
-    </div>
-  </header>
-
-  <section class="intro section" id="story">
-    <div class="container intro-grid">
-      <p class="section-kicker">01 · About</p>
-      <div class="about-copy">
-        <h2 class="statement">I learn best by building, breaking, and improving things.</h2>
-        <p>If I am learning a protocol, I want to wire it up, send real messages through it, break it on purpose, and see how the system recovers. That is how the CAN-FD test bench came together, and it is the same mindset I bring to websites, data projects, and tools used by community teams.</p>
-        <p>Outside engineering, the gym is where I reset. I have trained consistently for more than four years and became a certified personal trainer because I wanted to understand the work at a deeper level. Coaching has also made me a better teammate: explain things clearly, meet people where they are, and adjust the plan when it is not working.</p>
-        <div class="about-facts" aria-label="A few facts about Umair">
-          <span><strong>4+ years</strong> consistent training</span>
-          <span><strong>PT certified</strong> personal trainer</span>
-          <span><strong>2028</strong> Computer Engineering</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= EXPERIENCE ================= -->
-  <section id="experience" class="timeline-section section">
-    <div class="container">
-      <div class="timeline-heading">
-        <div>
-          <p class="section-kicker">02 · U+ Education</p>
-          <h2>How my role changed over time</h2>
-        </div>
-        <p>I joined U+ through an eight-month co-op and kept taking on more responsibility. The website remained part of my work, but the role grew into data supervision, operations, project planning, and technology leadership.</p>
-      </div>
-
-      <div class="timeline-layout">
-        <aside class="timeline-summary">
-          <span class="timeline-company">U+ Education</span>
-          <strong>May 2025 to present</strong>
-          <p>From co-op student to Technology Manager.<br />Six roles, with several responsibilities overlapping.</p>
-          <div class="timeline-legend"><span></span> Scroll to trace the progression</div>
+        <aside class="signal-card reveal" data-tilt data-spotlight>
+          <div class="signal-topline mono"><span>LIVE / SYSTEM MAP</span><span data-clock>21:20:00</span></div>
+          <div class="signal-stage" data-signal-stage>
+            <svg class="signal-trace" viewBox="0 0 600 240" aria-hidden="true">
+              <path class="trace-grid" d="M0 40H600M0 80H600M0 120H600M0 160H600M0 200H600M75 0V240M150 0V240M225 0V240M300 0V240M375 0V240M450 0V240M525 0V240" />
+              <path class="trace-line" data-trace d="M0 120 C60 120 45 70 95 70 S145 165 190 165 S245 90 295 90 S350 145 402 145 S465 54 515 54 S560 120 600 120" />
+            </svg>
+            <button class="signal-node node-one" type="button" data-signal-node="Embedded">Embedded</button>
+            <button class="signal-node node-two" type="button" data-signal-node="Software">Software</button>
+            <button class="signal-node node-three" type="button" data-signal-node="People">People</button>
+            <div class="signal-core"><strong>UJ</strong><small data-signal-label>systems</small></div>
+          </div>
+          <p class="signal-note">Current focus: technical leadership, embedded systems, and making complex projects easier to run.</p>
+          <div class="signal-readout">
+            <span><strong>$10K+</strong> fundraising supported</span>
+            <span><strong>200+</strong> volunteers supervised</span>
+            <span><strong>270+</strong> youth program planned</span>
+          </div>
         </aside>
+      </div>
 
-        <div class="timeline" id="uplusTimeline">
-          <div class="timeline-rail" aria-hidden="true"><div class="timeline-progress"></div></div>
-
-          <article class="timeline-step is-active" data-period="01">
-            <div class="timeline-marker">01</div>
-            <div class="timeline-card">
-              <p class="timeline-date">May to Dec 2025 · 8-month co-op</p>
-              <h3>Website Development Coordinator &amp; Teaching Assistant</h3>
-              <p>I joined U+ through a co-op, coordinated website updates, supported students in class, and learned how to turn loose requests into work a technical team could deliver.</p>
-              <div class="timeline-tags"><span>Web coordination</span><span>Teaching support</span><span>Requirements</span></div>
-            </div>
-          </article>
-
-          <article class="timeline-step" data-period="02">
-            <div class="timeline-marker">02</div>
-            <div class="timeline-card">
-              <p class="timeline-date">Sep to Dec 2025 · Co-op</p>
-              <h3>Volunteer Supervisor</h3>
-              <p>While continuing the website work, I began leading volunteers directly: assigning projects, checking progress, giving practical feedback, and helping people finish work they could be proud to show.</p>
-              <div class="timeline-tags"><span>Task delegation</span><span>Progress reviews</span><span>Mentorship</span></div>
-            </div>
-          </article>
-
-          <article class="timeline-step" data-period="03">
-            <div class="timeline-marker">03</div>
-            <div class="timeline-card">
-              <p class="timeline-date">Jan to Apr 2026 · Part-time contract</p>
-              <h3>Website Developer</h3>
-              <p>U+ kept me on after the co-op. I maintained and improved the site, worked through design and content changes, and stayed close to the day-to-day needs behind each update.</p>
-              <div class="timeline-tags"><span>Web development</span><span>Site maintenance</span><span>UX updates</span></div>
-            </div>
-          </article>
-
-          <article class="timeline-step" data-period="04">
-            <div class="timeline-marker">04</div>
-            <div class="timeline-card">
-              <p class="timeline-date">Apr 2026 to present · Full-time contract</p>
-              <h3>Website Developer &amp; Data Analyst Volunteer Supervisor</h3>
-              <p>I lead web and data volunteers, turn organizational questions into clear assignments, review Power BI dashboards and findings, and help teams improve the work before it reaches decision-makers.</p>
-              <div class="timeline-tags"><span>Power BI review</span><span>Data supervision</span><span>Technical delivery</span></div>
-            </div>
-          </article>
-
-          <article class="timeline-step" data-period="05">
-            <div class="timeline-marker">05</div>
-            <div class="timeline-card">
-              <p class="timeline-date">Jul to Aug 2026 · Full-time contract</p>
-              <h3>Office Manager</h3>
-              <p>For two busy months in Markham, I ran daily office operations, set priorities for a cross-functional team, led weekly meetings, followed up on action items, and stepped in when projects or people were blocked.</p>
-              <div class="timeline-tags"><span>Operations</span><span>Team meetings</span><span>Issue resolution</span></div>
-            </div>
-          </article>
-
-          <article class="timeline-step" data-period="06">
-            <div class="timeline-marker">06</div>
-            <div class="timeline-card">
-              <p class="timeline-date">Sep 2026 to present · Co-op</p>
-              <h3>Technology Manager</h3>
-              <p>I now set technology priorities across U+ projects, lead teams and meetings, build project plans and timelines, present updates, and keep the website, data, and operational sides moving in the same direction.</p>
-              <div class="timeline-tags"><span>Technology strategy</span><span>Project planning</span><span>Cross-functional leadership</span></div>
-            </div>
-          </article>
+      <div class="ticker" aria-label="Areas of practice">
+        <div class="ticker-track" data-ticker>
+          <span>C / C++</span><i></i><span>CAN-FD</span><i></i><span>STM32</span><i></i><span>Python</span><i></i><span>Data</span><i></i><span>Program delivery</span><i></i><span>Node.js</span><i></i><span>Systems thinking</span><i></i>
+          <span aria-hidden="true">C / C++</span><i></i><span>CAN-FD</span><i></i><span>STM32</span><i></i><span>Python</span><i></i><span>Data</span><i></i><span>Program delivery</span><i></i><span>Node.js</span><i></i><span>Systems thinking</span><i></i>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <section class="moments section" id="moments">
-    <div class="container">
-      <div class="section-intro">
-        <p class="section-kicker">03 · Selected moments</p>
-        <h2>Work outside the usual job description</h2>
-        <p>Some of the work I remember most happened away from my desk: speaking, running live technology, and representing a team I care about.</p>
-      </div>
-
-      <div class="moment-grid">
-        <article class="moment-card moment-feature conference-card" data-reveal>
-          <figure class="conference-photo">
-            <img src="assets/oacao-aging-well-conference.jpg" alt="Attendees gathered for a previous OACAO Aging Well Conference presentation" loading="lazy" />
-            <figcaption>Previous Aging Well conference · <a href="https://www.oacao.org/events/aging-well-conference/" target="_blank" rel="noreferrer">OACAO</a></figcaption>
-          </figure>
-          <div class="conference-body">
-            <span class="moment-number">NOV 2, 2026</span>
-            <div class="moment-icon"><i class="fa-solid fa-microphone-lines"></i></div>
-            <p class="moment-label">OACAO Aging Well Conference</p>
-            <h3>Presenting at Aging Well 2026</h3>
-            <p>I am presenting on November 2 at the Hilton Mississauga/Meadowvale. The provincial conference runs November 1 to 3 under the theme “Reimagine. Redefine. Rediscover.” It brings together people working with older adults and Senior Active Living Centres across Ontario.</p>
-            <a class="moment-link" href="https://www.oacao.org/events/aging-well-conference/" target="_blank" rel="noreferrer">Conference details <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    <section class="intro section" id="about">
+      <div class="container intro-grid">
+        <div class="section-index reveal"><span>01</span><em>About</em></div>
+        <div class="about-copy">
+          <h2 class="statement reveal-text">I learn fastest when there is something real enough to break.</h2>
+          <div class="body-columns reveal">
+            <p>If I am learning a protocol, I want to wire it up, send real messages through it, break it on purpose, and watch the system recover. That mindset has taken me from embedded test benches to websites, data projects, payment hardware, and tools used by community teams.</p>
+            <p>Outside engineering, the gym is where I reset. Training taught me to respect boring consistency — useful when a project is less “big idea” and more 47 small decisions that all have to be right.</p>
           </div>
-        </article>
-
-        <article class="moment-card mayor-card" data-reveal>
-          <figure class="moment-photo mayor-photo">
-            <img class="mayor-main-photo" src="assets/mayor-david-west-2025.jpg" alt="Umair Jibran with Richmond Hill Mayor David West at the 2025 Mayor's Luncheon" loading="lazy" />
-            <img class="mayor-badge-inset" src="assets/mayors-luncheon-badge-2025.jpg" alt="Umair Jibran's company representative badge for the 2025 State of the City Address" loading="lazy" />
-            <figcaption>With Mayor David West at the State of the City luncheon</figcaption>
-          </figure>
-          <div class="moment-body">
-            <span class="moment-number">OCT 27, 2025</span>
-            <p class="moment-label">Mayor’s Luncheon</p>
-            <h3>Met Richmond Hill Mayor David West</h3>
-            <p>I attended the State of the City luncheon as an invited company representative for U+ Education.</p>
+          <div class="about-facts reveal" aria-label="A few facts about Umair">
+            <span><strong>2028</strong> B.Eng. expected</span>
+            <span><strong>5→1</strong> roles to Technology Manager</span>
+            <span><strong>10K</strong> Q2 2026 conversions supported</span>
           </div>
-        </article>
-
-        <article class="moment-card" data-reveal>
-          <span class="moment-number">AUG 28, 2026</span>
-          <div class="moment-icon"><i class="fa-solid fa-people-group"></i></div>
-          <p class="moment-label">Canada Summer Jobs</p>
-          <h3>CSJ Program Celebration with MP Tim Hodgson</h3>
-          <p>Invited to represent U+ Education at the special CSJ program celebration.</p>
-        </article>
-
-        <article class="moment-card moment-dark av-card" data-reveal>
-          <img class="moment-cover" src="assets/flato-markham-av-2026.jpg" alt="AV control room at Flato Markham Theatre during the August 2026 community events" loading="lazy" />
-          <div class="av-content">
-            <span class="moment-number">AUG 9, 2026 · 500+ ATTENDEES</span>
-            <div class="moment-icon"><i class="fa-solid fa-sliders"></i></div>
-            <p class="moment-label">Flato Markham Theatre</p>
-            <h3>AV and technical support for three community events</h3>
-            <p>I handled event technology for the Regional Speech Contest, camp graduation, and Volunteer Appreciation hosted by U+ Education and YRES. The work covered audio, visuals, equipment setup, transitions, and live troubleshooting.</p>
-            <div class="moment-links">
-              <a href="https://www.upluscommunity.org/regionalspeechcontest" target="_blank" rel="noreferrer">Speech contest</a>
-              <a href="https://yorkeducation.org/volunteer-appreciation-event-2026/" target="_blank" rel="noreferrer">Volunteer event</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="moment-card moment-lime" data-reveal>
-          <span class="moment-number">ONE</span>
-          <div class="moment-icon"><i class="fa-solid fa-award"></i></div>
-          <p class="moment-label">Recognized at York</p>
-          <h3>Gordon and Agnes Brash Award in Engineering</h3>
-          <p>Selected as the sole engineering student recipient for academic achievement, leadership, and community involvement.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="work-section section">
-    <div class="container">
-      <div class="section-intro section-intro-wide">
-        <div>
-          <p class="section-kicker">04 · Projects</p>
-          <h2>Projects</h2>
         </div>
-        <p>These projects started with something I wanted to understand or improve. Each card includes a small interactive demo of the idea behind the build.</p>
       </div>
+    </section>
 
-      <div class="work-grid">
-        <article class="work-card work-hero" data-reveal>
-          <div class="work-visual demo-surface can-surface">
+    <section class="timeline-section section" id="experience">
+      <div class="container">
+        <div class="section-head split-headline">
+          <div class="section-index reveal"><span>02</span><em>Experience</em></div>
+          <div>
+            <h2 class="reveal-text">One organization.<br />A role that kept changing.</h2>
+            <p class="reveal">I joined U+ through an eight-month co-op. The website stayed part of the job; the scope grew into data supervision, operations, project planning, and technology leadership.</p>
+          </div>
+        </div>
+
+        <div class="timeline-layout">
+          <aside class="timeline-summary reveal">
+            <span class="mono timeline-company">U+ EDUCATION</span>
+            <strong>May 2025 → present</strong>
+            <p>Co-op student to Technology Manager. Several responsibilities overlapped; that is the point.</p>
+            <div class="timeline-meter"><i data-timeline-meter></i></div>
+            <small class="mono">scroll to trace the progression</small>
+          </aside>
+
+          <div class="timeline" data-timeline>
+            <div class="timeline-rail"><i class="timeline-progress"></i></div>
+            <article class="timeline-step" data-period="01">
+              <div class="timeline-marker">01</div>
+              <div class="timeline-card">
+                <p class="timeline-date">May – Dec 2025 · 8-month co-op</p>
+                <h3>Website Development Coordinator & Teaching Assistant</h3>
+                <p>Coordinated website updates, supported students in class, and learned how to turn loose requests into technical work a team could actually deliver.</p>
+                <div class="timeline-tags"><span>Web coordination</span><span>Teaching support</span><span>Requirements</span></div>
+              </div>
+            </article>
+            <article class="timeline-step" data-period="02">
+              <div class="timeline-marker">02</div>
+              <div class="timeline-card">
+                <p class="timeline-date">Sep – Dec 2025 · overlapping responsibility</p>
+                <h3>Volunteer Supervisor</h3>
+                <p>Began leading volunteers directly: assigning projects, checking progress, giving practical feedback, and helping people get work across the finish line.</p>
+                <div class="timeline-tags"><span>Delegation</span><span>Progress reviews</span><span>Mentorship</span></div>
+              </div>
+            </article>
+            <article class="timeline-step" data-period="03">
+              <div class="timeline-marker">03</div>
+              <div class="timeline-card">
+                <p class="timeline-date">Jan – Apr 2026 · contract extension</p>
+                <h3>Website Developer & Data Analyst Volunteer Supervisor</h3>
+                <p>Maintained the site while reviewing analytical work, clarifying priorities, and supporting volunteers through delivery.</p>
+                <div class="timeline-tags"><span>Power BI</span><span>Data review</span><span>Technical delivery</span></div>
+              </div>
+            </article>
+            <article class="timeline-step" data-period="04">
+              <div class="timeline-marker">04</div>
+              <div class="timeline-card">
+                <p class="timeline-date">Jul – Aug 2026 · full-time contract</p>
+                <h3>Office Manager</h3>
+                <p>Ran daily operations in Markham, set priorities for a cross-functional team, led weekly meetings, and stepped in when projects or people were blocked.</p>
+                <div class="timeline-tags"><span>Operations</span><span>Meetings</span><span>Issue resolution</span></div>
+              </div>
+            </article>
+            <article class="timeline-step" data-period="05">
+              <div class="timeline-marker">05</div>
+              <div class="timeline-card">
+                <p class="timeline-date">Sep 2026 → present</p>
+                <h3>Technology Manager</h3>
+                <p>Set technology priorities across projects, manage work in Jira and GitHub, supervise volunteer leads, report risks and dependencies, and keep web, data, and operational work moving in the same direction.</p>
+                <div class="timeline-tags"><span>Technology strategy</span><span>Project planning</span><span>Cross-functional leadership</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip section" aria-label="Selected proof points">
+      <div class="container proof-grid">
+        <div class="proof-lead reveal"><span class="mono">NOT JUST TITLES</span><strong>Some numbers I can point to.</strong></div>
+        <article class="proof-card reveal"><strong>2,700+</strong><span>volunteer service hours tracked</span></article>
+        <article class="proof-card reveal"><strong>~10,000</strong><span>Q2 2026 conversions generated</span></article>
+        <article class="proof-card reveal"><strong>$35.5K</strong><span>baseline drone-program budget</span></article>
+      </div>
+    </section>
+
+    <section class="work-section section" id="projects">
+      <div class="container">
+        <div class="section-head work-heading">
+          <div class="section-index reveal"><span>03</span><em>Projects</em></div>
+          <div>
+            <h2 class="reveal-text">Built to answer a question,<br />not to fill a portfolio.</h2>
+            <p class="reveal">The demos are intentionally small. Click them — each recreates the core idea without pretending to be the whole project.</p>
+          </div>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card work-hero reveal" data-tilt data-spotlight>
             <div class="project-demo can-demo" data-can-demo>
-              <div class="demo-header"><span><i class="demo-dot"></i> CAN BUS</span><span class="demo-state" data-can-state>Normal</span></div>
-              <div class="can-network" aria-label="Simulated CAN network">
-                <div class="ecu-node" data-can-sensor><small>NODE 01</small><strong>Sensor ECU</strong><span>24.2°C · 1,240 rpm</span></div>
+              <div class="demo-chrome"><span class="mono">CAN-FD / BENCH</span><span class="demo-state" data-can-state>Normal</span></div>
+              <div class="can-network">
+                <div class="ecu"><small>SENSOR ECU</small><strong>24.2°C</strong><span>RPM 1240</span></div>
                 <div class="can-line"><i class="can-packet"></i></div>
-                <div class="ecu-node" data-can-actuator><small>NODE 02</small><strong>Actuator ECU</strong><span data-can-actuator-text>Fan output: 42%</span></div>
+                <div class="ecu"><small>ACTUATOR ECU</small><strong data-can-actuator-text>Fan output: 42%</strong><span data-can-actuator>fresh frames</span></div>
               </div>
-              <div class="demo-log mono" data-can-log aria-live="polite">
-                <span>0x181  TEMP 24.2  CRC OK</span>
-                <span>0x244  RPM 1240  CRC OK</span>
-                <span>0x310  FAN 42%  ACK</span>
-              </div>
-              <div class="demo-controls" aria-label="CAN demo controls">
-                <button type="button" data-can-action="normal">Run</button>
-                <button type="button" data-can-action="fault">Inject fault</button>
-                <button type="button" data-can-action="reset">Reset</button>
-              </div>
+              <div class="demo-log mono" data-can-log><span>0x181 TEMP 24.2 CRC OK</span><span>0x244 RPM 1240 CRC OK</span><span>0x310 FAN 42% ACK</span></div>
+              <div class="demo-controls"><button type="button" data-can-action="normal">Normal</button><button type="button" data-can-action="run">Stream</button><button type="button" data-can-action="fault">Drop RPM frame</button></div>
             </div>
-          </div>
-          <div class="work-copy">
-            <div class="work-meta"><span>Embedded systems</span><span class="status-chip">Completed</span></div>
-            <h3>CAN-FD ECU Test Bench</h3>
-            <p>I built a two-controller STM32 test bench where a sensor ECU publishes temperature and RPM frames and an actuator ECU checks message integrity and freshness before controlling a fan. A Python validation station captures traffic, injects dropped or delayed frames, and verifies timeout handling, fail-safe behaviour, and recovery.</p>
-            <div class="work-tags"><span>STM32</span><span>C/C++</span><span>FreeRTOS</span><span>CAN-FD</span><span>Python</span><span>Fault injection</span></div>
-          </div>
-        </article>
+            <div class="work-copy">
+              <div class="work-meta"><span>Embedded systems</span><span>Completed</span></div>
+              <h3>CAN-FD ECU Diagnostic Test Bench</h3>
+              <p>Two STM32 controllers, FreeRTOS, CAN-FD, and a Python validation station. The test harness captures traffic, injects dropped or delayed frames, and verifies timeout handling, fail-safe behaviour, and recovery.</p>
+              <div class="work-tags"><span>STM32</span><span>C/C++</span><span>FreeRTOS</span><span>CAN-FD</span><span>Python</span></div>
+            </div>
+          </article>
 
-        <article class="work-card work-wide" data-reveal>
-          <div class="work-visual demo-surface rf-surface">
-            <div class="project-demo rf-demo" data-rf-demo>
-              <div class="demo-header"><span><i class="demo-dot"></i> BASE STATION</span><span data-rf-summary>3 tags online</span></div>
+          <article class="work-card reveal" data-tilt data-spotlight>
+            <div class="project-demo rf-surface" data-rf-demo>
+              <div class="demo-chrome"><span class="mono">433 MHz / LAB</span><span data-rf-summary>3 tags online</span></div>
               <div class="rf-demo-map">
-                <div class="rf-demo-base"><i class="fa-solid fa-tower-broadcast"></i><span>BASE</span></div>
-                <div class="rf-demo-tag" data-rf-tag="1"><strong>TAG 01</strong><span>Seen 0.4s ago</span></div>
-                <div class="rf-demo-tag" data-rf-tag="2"><strong>TAG 02</strong><span>Seen 0.7s ago</span></div>
-                <div class="rf-demo-tag" data-rf-tag="3"><strong>TAG 03</strong><span>Seen 0.2s ago</span></div>
+                <div class="rf-demo-base">BASE</div>
+                <div class="rf-demo-tag" data-rf-tag="1"><strong>TAG-01</strong><span>Seen 0.2s ago</span></div>
+                <div class="rf-demo-tag" data-rf-tag="2"><strong>TAG-02</strong><span>Seen 0.4s ago</span></div>
+                <div class="rf-demo-tag" data-rf-tag="3"><strong>TAG-03</strong><span>Seen 0.6s ago</span></div>
               </div>
-              <div class="demo-controls" aria-label="RF demo controls">
-                <button type="button" data-rf-action="scan">Scan tags</button>
-                <button type="button" data-rf-action="missing">Simulate missing tag</button>
-                <button type="button" data-rf-action="reset">Reset</button>
-              </div>
+              <div class="demo-controls"><button type="button" data-rf-action="scan">Scan</button><button type="button" data-rf-action="missing">Simulate timeout</button><button type="button" data-rf-action="reset">Reset</button></div>
             </div>
-          </div>
-          <div class="work-copy">
-            <div class="work-meta"><span>Embedded and RF</span><span>Prototype</span></div>
-            <h3>RF Asset Finder</h3>
-            <p>I wanted to see what reliable communication looks like when the link is simple and imperfect. The result is a low-power tag and base station with device IDs, CRC checks, acknowledgements, and retry logic for monitoring shared equipment.</p>
-            <div class="work-tags"><span>C/C++</span><span>Arduino</span><span>433 MHz RF</span><span>Custom protocol</span></div>
-          </div>
-        </article>
+            <div class="work-copy">
+              <div class="work-meta"><span>Embedded + RF</span><span>Prototype</span></div>
+              <h3>RF Asset Finder</h3>
+              <p>A low-power tag and base station with device IDs, CRC validation, acknowledgements, and retransmission logic for identifying shared equipment over a simple, imperfect RF link.</p>
+              <div class="work-tags"><span>Arduino</span><span>C/C++</span><span>433 MHz</span><span>Custom protocol</span></div>
+            </div>
+          </article>
 
-        <article class="work-card" data-reveal>
-          <div class="work-visual demo-surface payment-surface">
-            <div class="project-demo payment-demo" data-payment-demo>
+          <article class="work-card reveal" data-tilt data-spotlight>
+            <div class="project-demo payment-surface" data-payment-demo>
               <div class="payment-terminal">
-                <div class="payment-screen" data-payment-screen aria-live="polite"><small>DEMO TERMINAL</small><strong>Select amount</strong><span>No payment is processed</span></div>
+                <div class="payment-screen" data-payment-screen><small>DEMO TERMINAL</small><strong>Select amount</strong><span>No real payment is processed</span></div>
                 <i class="payment-led"></i>
               </div>
-              <div class="amount-row" aria-label="Donation amount">
-                <button type="button" data-amount="5">$5</button>
-                <button type="button" data-amount="10">$10</button>
-                <button type="button" data-amount="20">$20</button>
-              </div>
+              <div class="amount-row"><button type="button" data-amount="5">$5</button><button type="button" data-amount="10">$10</button><button type="button" data-amount="20">$20</button></div>
               <button class="demo-primary" type="button" data-payment-tap>Simulate tap</button>
             </div>
-          </div>
-          <div class="work-copy">
-            <div class="work-meta"><span>Hardware-software integration</span><span>Deployed</span></div>
-            <h3>Tap-to-Donate</h3>
-            <p>I built this so event volunteers could accept card donations without wrestling with a complicated setup. It combines WisePOS/BBPOS hardware, Stripe, and JavaScript and has supported more than $10,000 in fundraising.</p>
-            <div class="work-tags"><span>Stripe</span><span>WisePOS</span><span>JavaScript</span><span>Live deployment</span></div>
-          </div>
-        </article>
+            <div class="work-copy">
+              <div class="work-meta"><span>Hardware × software</span><span>Deployed</span></div>
+              <h3>Tap-to-Donate</h3>
+              <p>WisePOS/BBPOS hardware, Stripe, and JavaScript built for live community events — designed so volunteers could take card donations without wrestling with a complicated setup.</p>
+              <div class="work-tags"><span>Stripe</span><span>WisePOS</span><span>JavaScript</span><span>Live deployment</span></div>
+            </div>
+          </article>
 
-        <article class="work-card" data-reveal>
-          <div class="work-visual demo-surface split-surface">
-            <div class="project-demo split-demo" data-split-demo>
-              <div class="split-head">
-                <span>Bench Press</span><small>Last 4 sessions</small>
-              </div>
-              <div class="split-bars" aria-label="Training progress chart">
-                <i style="--bar:52%"><span>70</span></i><i style="--bar:65%"><span>75</span></i><i style="--bar:77%"><span>80</span></i><i class="current-bar" style="--bar:90%"><span data-split-weight>84</span></i>
-              </div>
-              <div class="split-entry"><button type="button" data-weight-action="down" aria-label="Decrease weight">−</button><output data-split-output>84 kg × 5</output><button type="button" data-weight-action="up" aria-label="Increase weight">+</button></div>
+          <article class="work-card reveal" data-tilt data-spotlight>
+            <div class="project-demo split-surface" data-split-demo>
+              <div class="split-head"><span>Bench press</span><small>sample session</small></div>
+              <div class="split-bars"><i style="--bar:45%"><span>76</span></i><i style="--bar:54%"><span>79</span></i><i style="--bar:65%"><span>82</span></i><i class="current-bar" style="--bar:72%"><span data-split-weight>84</span></i></div>
+              <div class="split-entry"><button type="button" data-weight-action="down">−</button><output data-split-output>84 kg × 5</output><button type="button" data-weight-action="up">+</button></div>
               <button class="demo-primary" type="button" data-log-set>Log sample set</button>
-              <p class="demo-message" data-split-message aria-live="polite">Adjust the weight and log a set.</p>
+              <p class="demo-message" data-split-message>Adjust the weight and log a set.</p>
             </div>
-          </div>
-          <div class="work-copy">
-            <div class="work-meta"><span>Product software</span><span>Full stack</span></div>
-            <h3>Split</h3>
-            <p>Training is a big part of my life, so I built the workout tracker I wanted to use: create a split, log sets quickly, and see personal-record trends without digging through old notes.</p>
-            <div class="work-tags"><span>Next.js</span><span>React Native</span><span>Node</span><span>PostgreSQL</span></div>
-            <div class="split-easter-wrap">
-              <button class="split-easter-egg" type="button" data-split-easter-egg aria-expanded="false"><i class="fa-solid fa-dumbbell" aria-hidden="true"></i><span>Personal stat</span></button>
-              <span class="split-secret" data-split-secret aria-hidden="true"><strong>315 lb</strong> bench press PR</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="work-card work-wide" data-reveal>
-          <div class="work-visual demo-surface order-surface">
-            <div class="project-demo order-demo" data-order-demo>
-              <div class="demo-header"><span>ORDER ANALYZER</span><span>Sample data</span></div>
-              <div class="order-input">
-                <label for="sampleOrder">Order</label>
-                <select id="sampleOrder" data-order-select>
-                  <option value="1048">#1048 · 2 books + bookmark</option>
-                  <option value="1052">#1052 · gift set + card</option>
-                  <option value="1061">#1061 · 4 books</option>
-                </select>
-                <button type="button" data-order-run>Analyze</button>
-              </div>
-              <div class="order-output" data-order-output aria-live="polite">
-                <small>PACKING INSTRUCTION</small>
-                <strong>Mailer M2</strong>
-                <span>Wrap books · Add bookmark · Print label</span>
+            <div class="work-copy">
+              <div class="work-meta"><span>Product software</span><span>Full stack</span></div>
+              <h3>Split Workout Tracker</h3>
+              <p>A workout tracker for programs, exercises, logs, sets, and progress records. I designed the relational data model and REST API flow to keep web and mobile clients consistent.</p>
+              <div class="work-tags"><span>PostgreSQL</span><span>MySQL</span><span>Prisma</span><span>Node.js</span><span>REST APIs</span></div>
+              <div class="split-easter-wrap">
+                <button class="split-easter-egg" type="button" data-split-easter-egg aria-expanded="false">personal stat +</button>
+                <span class="split-secret" data-split-secret aria-hidden="true"><strong>315 lb</strong> bench PR</span>
               </div>
             </div>
-          </div>
-          <div class="work-copy">
-            <div class="work-meta"><span>Operations tool</span><span>Deployed</span></div>
-            <h3>Shopify Order Analyzer</h3>
-            <p>This started with a real packing problem. The Node.js tool reads Shopify order and product-dimension data, checks the customer’s selected items against packaging rules, and produces clear packing instructions. It reduced processing time and costs by approximately 15%.</p>
-            <div class="work-tags"><span>Node.js</span><span>JavaScript</span><span>Shopify</span><span>JSON/CSV</span><span>Rule-based logic</span></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+          </article>
 
-  <section class="other-work section" id="other-experience">
-    <div class="container">
-      <div class="section-intro">
-        <p class="section-kicker">05 · Other experience</p>
-        <h2>Other roles</h2>
-      </div>
-      <div class="role-list">
-        <article class="role-row" data-reveal>
-          <div class="role-date">Feb 2025 to Jan 2026</div>
-          <div><p class="role-org">Islamic Books &amp; Souvenirs</p><h3>Software Developer &amp; Co-Project Coordinator</h3></div>
-          <p>Turned a day-to-day fulfilment problem into a deployed packaging tool, then tested the workflow, documented it, and kept the Shopify catalogue accurate for the people using it.</p>
-          <span class="role-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-        </article>
-        <article class="role-row" data-reveal>
-          <div class="role-date">Sep 2024 to Apr 2026</div>
-          <div><p class="role-org">Muslim Student Association · York University</p><h3>Technology Lead</h3></div>
-          <p>Owned the technology behind events and fundraising, from the WordPress site and tap-to-donate hardware to volunteer training and live troubleshooting when something went wrong.</p>
-          <span class="role-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="capabilities section">
-    <div class="container capabilities-grid">
-      <div class="capabilities-heading">
-        <p class="section-kicker">06 · How I contribute</p>
-        <h2>Skills I use across projects and teams</h2>
-        <p>I move comfortably between the technical work and the people, plans, and decisions needed to deliver it.</p>
-      </div>
-
-      <div class="capability-list">
-        <article class="capability" data-reveal>
-          <span class="capability-index">01</span>
-          <div><h3>Systems &amp; embedded</h3><p>C, C++, STM32, Arduino, FreeRTOS, CAN-FD, 433 MHz RF, packet protocols, hardware integration, testing, and debugging.</p></div>
-        </article>
-        <article class="capability" data-reveal>
-          <span class="capability-index">02</span>
-          <div><h3>Software &amp; data</h3><p>JavaScript, Java, Python, SQL, React, Next.js, Node.js, REST APIs, PostgreSQL, Power BI, Excel, Shopify, and Stripe.</p></div>
-        </article>
-        <article class="capability" data-reveal>
-          <span class="capability-index">03</span>
-          <div><h3>Program delivery</h3><p>Project plans, timelines, milestones, budgets, risk and issue tracking, weekly reporting, requirements, Jira, GitHub, Figma, and documentation.</p></div>
-        </article>
-        <article class="capability" data-reveal>
-          <span class="capability-index">04</span>
-          <div><h3>Leadership in the room</h3><p>Team priorities, meetings, presentations, volunteer supervision, technical feedback, event AV, stakeholder communication, and calm troubleshooting.</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact-section section">
-    <div class="container contact-shell">
-      <div class="contact-copy">
-        <p class="section-kicker">07 · Contact</p>
-        <h2>Want to connect?</h2>
-        <p>If you are working on embedded systems, software, data, or a technical program that needs someone comfortable across all four, I would be glad to hear from you.</p>
-        <div class="contact-status"><i></i><span>Toronto, Canada</span></div>
-      </div>
-      <div class="contact-panel">
-        <a class="contact-email" href="mailto:umairmohammed26@gmail.com">
-          <span><small>Email</small><strong>umairmohammed26@gmail.com</strong></span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-        <div class="contact-socials">
-          <a href="https://www.linkedin.com/in/umair-jibran-87932a2a7/" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i><span>LinkedIn</span></a>
-          <a href="https://github.com/mjumair7" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
+          <article class="work-card work-wide reveal" data-tilt data-spotlight>
+            <div class="project-demo order-surface" data-order-demo>
+              <div class="demo-chrome"><span class="mono">ORDER ANALYZER</span><span>rule engine</span></div>
+              <div class="order-input"><label for="sample-order">Order</label><select id="sample-order" data-order-select><option value="1048">#1048 — 2 books</option><option value="1052">#1052 — gift order</option><option value="1061">#1061 — 5 books</option></select><button type="button" data-order-run>Analyze</button></div>
+              <div class="order-output" data-order-output><small>PACKING INSTRUCTION</small><strong>Mailer M2</strong><span>Wrap books · Add bookmark · Print label</span></div>
+            </div>
+            <div class="work-copy">
+              <div class="work-meta"><span>Operations tool</span><span>Deployed</span></div>
+              <h3>Shopify Order Analyzer</h3>
+              <p>A Node.js tool that reads Shopify order and product-dimension data, checks selected items against packaging rules, and produces clear packing instructions. It reduced processing time and costs by approximately 15%.</p>
+              <div class="work-tags"><span>Node.js</span><span>JavaScript</span><span>Shopify</span><span>JSON/CSV</span><span>Rule logic</span></div>
+            </div>
+          </article>
         </div>
-        <p class="contact-note">Email is the fastest way to reach me.</p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="resume-section section" id="resume">
+      <div class="container resume-grid">
+        <div class="resume-copy">
+          <div class="section-index reveal"><span>04</span><em>Resume</em></div>
+          <h2 class="reveal-text">The one-page version.</h2>
+          <p class="reveal">If you want the compact timeline, technical stack, coursework, and measurable outcomes without scrolling through the whole site, this is it.</p>
+          <div class="resume-actions reveal">
+            <a class="button button-primary magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">View full resume <span>↗</span></a>
+            <a class="button button-quiet magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" download>Download PDF <span>↓</span></a>
+          </div>
+          <div class="resume-notes reveal">
+            <div><span class="mono">CURRENT</span><strong>Technology Manager · U+ Education</strong></div>
+            <div><span class="mono">EDUCATION</span><strong>B.Eng. Computer Engineering · York · 2028</strong></div>
+            <div><span class="mono">FOCUS</span><strong>Embedded systems · software · data · delivery</strong></div>
+          </div>
+        </div>
+
+        <div class="resume-paper-wrap reveal" data-paper>
+          <div class="paper-shadow"></div>
+          <div class="resume-paper">
+            <div class="paper-top"><span class="mono">MOHAMMED UMAIR JIBRAN</span><span class="mono">1 / 1</span></div>
+            <iframe title="Mohammed Umair Jibran resume" src="assets/Mohammed_Umair_Jibran_Resume.pdf#view=FitH&toolbar=0&navpanes=0" loading="lazy"></iframe>
+            <a class="paper-overlay" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in a new tab"><span>open PDF ↗</span></a>
+          </div>
+          <p class="paper-caption mono">actual PDF — not a screenshot</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="other-work section" id="roles">
+      <div class="container">
+        <div class="section-head compact-head">
+          <div class="section-index reveal"><span>05</span><em>Elsewhere</em></div>
+          <h2 class="reveal-text">Other work that shaped how I build.</h2>
+        </div>
+        <div class="role-list">
+          <article class="role-row reveal">
+            <div class="role-date">Feb 2025 – Jan 2026</div>
+            <div><p class="role-org">Islamic Books & Souvenirs</p><h3>Software Developer & Co-Project Coordinator</h3></div>
+            <p>Turned a fulfilment problem into a deployed packaging tool, tested the rules, documented the workflow, and made it usable for non-technical staff.</p>
+            <span class="role-arrow">↗</span>
+          </article>
+          <article class="role-row reveal">
+            <div class="role-date">Sep 2024 – Apr 2026</div>
+            <div><p class="role-org">Muslim Student Association · York</p><h3>Technology Lead</h3></div>
+            <p>Owned the technology behind events and fundraising, including WordPress, tap-to-donate hardware, volunteer training, and live troubleshooting.</p>
+            <span class="role-arrow">↗</span>
+          </article>
+          <article class="role-row reveal">
+            <div class="role-date">Selected recognition</div>
+            <div><p class="role-org">York University</p><h3>Gordon and Agnes (Twambley) Brash Award</h3></div>
+            <p>Sole engineering student recipient, recognized for academic achievement, leadership, and community involvement.</p>
+            <span class="role-arrow">★</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities section" id="skills">
+      <div class="container capabilities-grid">
+        <div class="capabilities-heading">
+          <div class="section-index reveal"><span>06</span><em>Skills</em></div>
+          <h2 class="reveal-text">Comfortable moving between the stack and the room.</h2>
+          <p class="reveal">The useful part is not knowing every tool. It is knowing which layer is actually causing the problem.</p>
+        </div>
+        <div class="capability-list">
+          <article class="capability reveal"><span class="capability-index mono">01</span><div><h3>Systems & embedded</h3><p>C, C++, STM32, Arduino, FreeRTOS, CAN-FD, UART, SPI, I²C, 433 MHz RF, hardware-software debugging.</p></div></article>
+          <article class="capability reveal"><span class="capability-index mono">02</span><div><h3>Software & data</h3><p>Python, Java, JavaScript, SQL, Node.js, REST APIs, PostgreSQL, MySQL, Prisma, Power BI, Tableau, Excel, JSON/CSV processing.</p></div></article>
+          <article class="capability reveal"><span class="capability-index mono">03</span><div><h3>Program delivery</h3><p>Requirements, project plans, schedules, milestones, budgets, risks, issue tracking, process documentation, technical reporting, Jira, GitHub, Docker.</p></div></article>
+          <article class="capability reveal"><span class="capability-index mono">04</span><div><h3>Leadership in the room</h3><p>Team priorities, meetings, presentations, volunteer supervision, technical feedback, stakeholder communication, and calm troubleshooting.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section section" id="contact">
+      <div class="container">
+        <div class="contact-shell reveal" data-spotlight>
+          <div class="contact-copy">
+            <div class="section-index light"><span>07</span><em>Contact</em></div>
+            <h2>Got a problem that crosses layers?</h2>
+            <p>Embedded, software, data, delivery — or the awkward space where all four meet.</p>
+            <div class="contact-status"><i></i><span>Toronto, Ontario</span></div>
+          </div>
+          <div class="contact-panel">
+            <a class="contact-email magnetic" href="mailto:umairmohammed26@gmail.com">
+              <span><small>Email</small><strong>umairmohammed26@gmail.com</strong></span><b>↗</b>
+            </a>
+            <a class="contact-resume magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">
+              <span><small>Resume</small><strong>Open the one-page PDF</strong></span><b>↗</b>
+            </a>
+            <p class="contact-note">Phone and professional links are included on the resume.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="container footer-inner"><span>© <span id="yy"></span> Umair Jibran</span><span>Computer Engineering at York University</span></div>
+    <div class="container footer-inner"><span>© <span id="yy"></span> Mohammed Umair Jibran</span><span class="mono">BUILT / NOT GENERATED</span></div>
   </footer>
 
-  <!-- Libs + App -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js?v=5"></script>
+  <script src="script.js"></script>
 </body>
 </html>

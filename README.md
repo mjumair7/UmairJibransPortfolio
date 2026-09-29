@@ -1,9 +1,9 @@
-# `UJ // SYSTEMS, SOFTWARE, PEOPLE`
+# `MJ // SYSTEMS, SOFTWARE, PEOPLE`
 
 > **This is not a gallery of finished pixels.**  
 > It is a map of the systems I have touched, broken, rebuilt, shipped, led, and learned from.
 
-I’m **Mohammed Umair Jibran** — a Computer Engineering student at York University and Technology Manager at U+ Education.
+I’m **Mohammed Umair Jibran**,a Computer Engineering student at York University and Technology Manager at U+ Education.
 
 My work tends to live in the awkward middle where categories stop being useful: embedded hardware talking to software, data turning into decisions, a technical idea becoming something volunteers can actually use, or a messy workflow becoming a repeatable system.
 

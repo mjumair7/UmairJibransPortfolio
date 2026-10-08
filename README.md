@@ -47,6 +47,10 @@ I am most interested in embedded systems, hardware-software integration, backend
 - CAN systems and automotive diagnostics;
 - making small technical tools easier to operate and maintain.
 
+## AI and automation
+
+I use AI openly for review and iteration. [My disclosure](AI_USE.md) separates generative help from dependency bots, CI, and diagram tooling, and lists the checks I use before accepting a suggestion.
+
 ## About this repository
 
 The site is plain HTML, CSS, and JavaScript so the implementation stays inspectable. There is no framework build step. Open `index.html` locally or visit the GitHub Pages link above.

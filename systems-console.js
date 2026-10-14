@@ -250,14 +250,49 @@ for (const demo of document.querySelectorAll('[data-sentricode-demo]')) {
   });
 }
 
-// Hero system map: clicking a node changes the center label and nudges the trace.
+// Hero system map: each layer tells a different part of the same delivery story.
 const signalLabel = document.querySelector('[data-signal-label]');
+const signalCode = document.querySelector('[data-signal-code]');
+const signalTitle = document.querySelector('[data-signal-title]');
+const signalCopy = document.querySelector('[data-signal-copy]');
 const trace = document.querySelector('[data-trace]');
-document.querySelectorAll('[data-signal-node]').forEach(node => {
+const signalStories = {
+  Embedded: {
+    code: 'HW',
+    title: 'Inputs you can measure',
+    copy: 'Sensors, buses, timing, and failure modes become observable instead of mysterious.'
+  },
+  Software: {
+    code: 'SW',
+    title: 'State you can explain',
+    copy: 'Interfaces and tools surface what happened, why it matters, and what to do next.'
+  },
+  People: {
+    code: 'PX',
+    title: 'Handoffs that survive',
+    copy: 'The system stays useful for the teammate or volunteer who was not in the build room.'
+  },
+  Delivery: {
+    code: 'OPS',
+    title: 'Work that reaches reality',
+    copy: 'Constraints, risks, and edge cases get resolved before the live moment depends on them.'
+  }
+};
+const signalNodes = [...document.querySelectorAll('[data-signal-node]')];
+signalNodes.forEach(node => {
+  node.setAttribute('aria-pressed', 'false');
   node.addEventListener('click', () => {
-    document.querySelectorAll('[data-signal-node]').forEach(item => item.classList.remove('is-active'));
+    const story = signalStories[node.dataset.signalNode];
+    signalNodes.forEach(item => {
+      item.classList.remove('is-active');
+      item.setAttribute('aria-pressed', 'false');
+    });
     node.classList.add('is-active');
+    node.setAttribute('aria-pressed', 'true');
     if (signalLabel) signalLabel.textContent = node.dataset.signalNode.toLowerCase();
+    if (signalCode) signalCode.textContent = story.code;
+    if (signalTitle) signalTitle.textContent = story.title;
+    if (signalCopy) signalCopy.textContent = story.copy;
     if (trace && !reduceMotion) {
       trace.animate([
         { strokeDashoffset: '0', opacity: 1 },
@@ -267,6 +302,27 @@ document.querySelectorAll('[data-signal-node]').forEach(node => {
     }
   });
 });
+
+// The project directory behaves like a live case-file index while scrolling.
+const projectLinks = [...document.querySelectorAll('[data-project-link]')];
+const projectCards = projectLinks
+  .map(link => document.getElementById(link.dataset.projectLink))
+  .filter(Boolean);
+if (projectCards.length) {
+  const projectObserver = new IntersectionObserver(entries => {
+    const current = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!current) return;
+    projectLinks.forEach(link => {
+      const active = link.dataset.projectLink === current.target.id;
+      link.classList.toggle('is-current', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }, { threshold: 0.08, rootMargin: '-18% 0px -48% 0px' });
+  projectCards.forEach(card => projectObserver.observe(card));
+}
 
 
 // Field-notes section: active story + gentle scroll-driven photo movement.

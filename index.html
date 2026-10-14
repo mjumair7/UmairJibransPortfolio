@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="field-notes.css?v=20261014-bench-signal" />
+  <link rel="stylesheet" href="field-notes.css?v=20261014-responsive-signal" />
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><i></i></div>
@@ -75,9 +75,14 @@
             <button class="signal-node node-one" type="button" data-signal-node="Embedded">Embedded</button>
             <button class="signal-node node-two" type="button" data-signal-node="Software">Software</button>
             <button class="signal-node node-three" type="button" data-signal-node="People">People</button>
+            <button class="signal-node node-four" type="button" data-signal-node="Delivery">Delivery</button>
             <div class="signal-core"><strong>UJ</strong><small data-signal-label>systems</small></div>
           </div>
-          <p class="signal-note">Current focus: technical leadership, embedded systems, and tools that stay understandable after handoff.</p>
+          <div class="signal-readout" aria-live="polite">
+            <span class="mono">ACTIVE LAYER / <b data-signal-code>ALL</b></span>
+            <strong data-signal-title>Whole-system thinking</strong>
+            <p data-signal-copy>Trace the signal from a real input to a decision someone can use.</p>
+          </div>
         </aside>
       </div>
 
@@ -264,8 +269,18 @@
           </div>
         </div>
 
+        <nav class="project-directory reveal" aria-label="Jump to a project">
+          <span class="mono">CASE FILES</span>
+          <a href="#project-sentricode" data-project-link="project-sentricode"><b>01</b> SentriCode</a>
+          <a href="#project-can" data-project-link="project-can"><b>02</b> CAN-FD</a>
+          <a href="#project-rf" data-project-link="project-rf"><b>03</b> RF Finder</a>
+          <a href="#project-tap" data-project-link="project-tap"><b>04</b> Tap-to-Donate</a>
+          <a href="#project-split" data-project-link="project-split"><b>05</b> Split</a>
+          <a href="#project-shopify" data-project-link="project-shopify"><b>06</b> Shopify</a>
+        </nav>
+
         <div class="work-grid">
-          <article class="work-card work-feature work-sentricode reveal" data-project-card data-spotlight>
+          <article class="work-card work-feature work-sentricode reveal" id="project-sentricode" data-project-card data-spotlight>
             <div class="project-demo sentricode-surface" data-sentricode-demo>
               <aside class="sentri-sidebar" aria-hidden="true">
                 <div class="sentri-brand"><span class="sentri-shield">S</span><strong>Sentri<span>Code</span></strong></div>
@@ -312,7 +327,7 @@
             </div>
           </article>
 
-          <article class="work-card work-hero reveal" data-tilt data-spotlight>
+          <article class="work-card work-hero reveal" id="project-can" data-tilt data-spotlight>
             <div class="project-demo can-demo" data-can-demo>
               <div class="demo-chrome"><span class="mono">CAN-FD / BENCH</span><span class="demo-state" data-can-state>Normal</span></div>
               <div class="can-network">
@@ -331,7 +346,7 @@
             </div>
           </article>
 
-          <article class="work-card reveal" data-tilt data-spotlight>
+          <article class="work-card reveal" id="project-rf" data-tilt data-spotlight>
             <div class="project-demo rf-surface" data-rf-demo>
               <div class="demo-chrome"><span class="mono">433 MHz / LAB</span><span data-rf-summary>3 tags online</span></div>
               <div class="rf-demo-map">
@@ -350,7 +365,7 @@
             </div>
           </article>
 
-          <article class="work-card reveal" data-tilt data-spotlight>
+          <article class="work-card reveal" id="project-tap" data-tilt data-spotlight>
             <div class="project-demo payment-surface" data-payment-demo>
               <div class="payment-terminal">
                 <div class="payment-screen" data-payment-screen><small>DEMO TERMINAL</small><strong>Select amount</strong><span>No real payment is processed</span></div>
@@ -367,7 +382,7 @@
             </div>
           </article>
 
-          <article class="work-card reveal" data-tilt data-spotlight>
+          <article class="work-card reveal" id="project-split" data-tilt data-spotlight>
             <div class="project-demo split-surface" data-split-demo>
               <div class="split-head"><span>Bench press</span><small>sample session</small></div>
               <div class="split-bars"><i style="--bar:45%"><span>76</span></i><i style="--bar:54%"><span>79</span></i><i style="--bar:65%"><span>82</span></i><i class="current-bar" style="--bar:72%"><span data-split-weight>84</span></i></div>
@@ -387,7 +402,7 @@
             </div>
           </article>
 
-          <article class="work-card work-wide reveal" data-tilt data-spotlight>
+          <article class="work-card work-wide reveal" id="project-shopify" data-tilt data-spotlight>
             <div class="project-demo order-surface" data-order-demo>
               <div class="demo-chrome"><span class="mono">ORDER ANALYZER</span><span>rule engine</span></div>
               <div class="order-input"><label for="sample-order">Order</label><select id="sample-order" data-order-select><option value="1048">#1048 — 2 books</option><option value="1052">#1052 — gift order</option><option value="1061">#1061 — 5 books</option></select><button type="button" data-order-run>Analyze</button></div>
@@ -456,14 +471,17 @@
     <section class="recognition-section section" id="recognition">
       <div class="container">
         <div class="recognition-card reveal" data-spotlight>
-          <div class="award-seal" aria-hidden="true">
-            <span class="award-seal-ring">
-              <svg viewBox="0 0 64 64" role="img">
-                <circle cx="32" cy="22" r="10"></circle>
-                <path d="M14 54c2.2-11.2 9-17 18-17s15.8 5.8 18 17"></path>
-              </svg>
-            </span>
-            <i></i><b></b>
+          <div class="award-aside">
+            <div class="award-seal" aria-hidden="true">
+              <span class="award-seal-ring">
+                <svg viewBox="0 0 64 64" role="img">
+                  <circle cx="32" cy="22" r="10"></circle>
+                  <path d="M14 54c2.2-11.2 9-17 18-17s15.8 5.8 18 17"></path>
+                </svg>
+              </span>
+              <i></i><b></b>
+            </div>
+            <div class="award-aside-copy"><span class="mono">AWARD / 01</span><strong>Sole engineering recipient</strong></div>
           </div>
           <div class="recognition-copy">
             <div class="section-index light"><span>07</span><em>Recognition</em></div>
@@ -564,6 +582,6 @@
     <div class="container footer-inner"><span>© <span id="yy"></span> Mohammed Umair Jibran</span><span class="mono">STUDENT ENGINEER / WORK IN PROGRESS</span></div>
   </footer>
 
-  <script src="systems-console.js?v=20261014-bench-signal"></script>
+  <script src="systems-console.js?v=20261014-responsive-signal"></script>
 </body>
 </html>

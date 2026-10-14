@@ -13,12 +13,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="field-notes.css?v=20260929-proof-edit" />
+  <link rel="stylesheet" href="field-notes.css?v=20261014-bench-signal" />
 </head>
 <body>
-  <!-- BUILD: 2026-09-29 SENTRICODE | Security workbench added; motion system refined -->
   <div class="scroll-progress" aria-hidden="true"><i></i></div>
   <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-beacon" aria-hidden="true"><i></i></div>
+  <aside class="chapter-rail" aria-hidden="true">
+    <span class="mono" data-chapter-current>00 / TOP</span>
+    <div class="chapter-rail-track"><i data-chapter-progress></i></div>
+    <small class="mono">SCROLL SIGNAL</small>
+  </aside>
 
   <nav class="navbar" aria-label="Primary navigation">
     <a class="logo magnetic" href="#top" aria-label="Umair Jibran — home">
@@ -34,7 +39,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#resume">Resume</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#ai-use">AI use</a></li>
+      <li><a href="#approach">Approach</a></li>
       <li><a class="nav-cta magnetic" href="#contact">Let’s talk</a></li>
     </ul>
   </nav>
@@ -44,19 +49,19 @@
       <div class="hero-grid container">
         <div class="hero-copy">
           <p class="eyebrow reveal"><span class="status-dot"></span> Technology Manager · Computer Engineering</p>
-          <h1 class="hero-title" aria-label="I build across hardware, software, and the systems between them.">
-            <span class="title-line"><span>I build across</span></span>
-            <span class="title-line"><span>hardware, software,</span></span>
-            <span class="title-line accent-line"><span>and the systems between them.</span></span>
+          <h1 class="hero-title" aria-label="I build systems for the moment the demo becomes real.">
+            <span class="title-line"><span>I build systems</span></span>
+            <span class="title-line"><span>for the moment</span></span>
+            <span class="title-line accent-line"><span>the demo becomes real.</span></span>
           </h1>
-          <p class="lead reveal">Computer Engineering at York. Technology Manager at U+. I like projects where code touches hardware, data has to become a decision, or a messy process needs to become a system.</p>
+          <p class="lead reveal">Computer Engineering at York. Technology Manager at U+. I work where hardware, software, data, and delivery stop being separate problems.</p>
           <div class="hero-actions reveal">
             <a class="button button-primary magnetic" href="#projects">See the work <span>↓</span></a>
             <a class="button button-quiet magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">Open resume <span>↗</span></a>
           </div>
           <div class="hero-footnote reveal">
             <span class="mono">TORONTO / 2026</span>
-            <span>Scroll — there are things to play with.</span>
+            <span>Built for the awkward cases. Scroll to test the work.</span>
           </div>
         </div>
 
@@ -72,7 +77,7 @@
             <button class="signal-node node-three" type="button" data-signal-node="People">People</button>
             <div class="signal-core"><strong>UJ</strong><small data-signal-label>systems</small></div>
           </div>
-          <p class="signal-note">Current focus: technical leadership, embedded systems, and making complex projects easier to run.</p>
+          <p class="signal-note">Current focus: technical leadership, embedded systems, and tools that stay understandable after handoff.</p>
         </aside>
       </div>
 
@@ -82,15 +87,22 @@
           <span aria-hidden="true">Security tooling</span><i></i><span>C / C++</span><i></i><span>CAN-FD</span><i></i><span>STM32</span><i></i><span>Python</span><i></i><span>Data</span><i></i><span>Program delivery</span><i></i><span>Node.js</span><i></i><span>Systems thinking</span><i></i>
         </div>
       </div>
+
+      <div class="bench-strip" aria-label="How Umair moves a project forward">
+        <div class="bench-strip-track">
+          <span><b>INPUT</b> loose brief</span><i>→</i><span><b>01</b> find the constraint</span><i>→</i><span><b>02</b> build the smallest real slice</span><i>→</i><span><b>03</b> break the edge case</span><i>→</i><span><b>OUTPUT</b> usable handoff</span>
+          <span aria-hidden="true"><b>INPUT</b> loose brief</span><i aria-hidden="true">→</i><span aria-hidden="true"><b>01</b> find the constraint</span><i aria-hidden="true">→</i><span aria-hidden="true"><b>02</b> build the smallest real slice</span><i aria-hidden="true">→</i><span aria-hidden="true"><b>03</b> break the edge case</span><i aria-hidden="true">→</i><span aria-hidden="true"><b>OUTPUT</b> usable handoff</span>
+        </div>
+      </div>
     </header>
 
     <section class="intro section" id="about">
       <div class="container intro-grid">
         <div class="section-index reveal"><span>01</span><em>About</em></div>
         <div class="about-copy">
-          <h2 class="statement reveal-text">I learn fastest when there is something real enough to break.</h2>
+          <h2 class="statement reveal-text">Give me something real enough to fail.</h2>
           <div class="body-columns reveal">
-            <p>If I am learning a protocol, I want to wire it up, send real messages through it, break it on purpose, and watch the system recover. That mindset has taken me from embedded test benches to websites, data projects, payment hardware, and tools used by community teams.</p>
+            <p>If I am learning a protocol, I want to wire it up, send real messages through it, break it on purpose, and watch the system recover. That instinct has taken me from embedded test benches to websites, data projects, payment hardware, and tools used by community teams.</p>
             <p>Outside engineering, the gym is where I reset. Training taught me to respect boring consistency — useful when a project is less “big idea” and more 47 small decisions that all have to be right.</p>
           </div>
           <div class="about-facts reveal" aria-label="A few facts about Umair">
@@ -290,7 +302,7 @@
             <div class="work-copy">
               <div class="work-meta"><span>Application security</span><span>v0.1 · Local-first</span></div>
               <h3>SentriCode</h3>
-              <p>A single-owner security workbench that connects a finding to the next decision. It combines source checks, redacted secret detection, dependency inventory, scan history, policy checks, and optional AI explanations — with a CLI for any checkout and a private web dashboard.</p>
+              <p>A single-owner security workbench that connects a finding to the next decision. It combines source checks, redacted secret detection, dependency inventory, scan history, policy checks, a CLI, and a private dashboard.</p>
               <div class="project-notes" aria-label="SentriCode design priorities">
                 <span><b>01</b> Show the evidence</span>
                 <span><b>02</b> Explain the risk</span>
@@ -490,19 +502,37 @@
       </div>
     </section>
 
-    <section class="capabilities section" id="ai-use">
-      <div class="container capabilities-grid">
-        <div class="capabilities-heading">
-          <div class="section-index reveal"><span>09</span><em>AI notes</em></div>
-          <h2 class="reveal-text">AI helped with the second pass. It did not choose the projects.</h2>
-          <p class="reveal">I use a small toolchain for review and maintenance, and I separate generative help from ordinary automation. I still read the changes, check the result, and decide what gets merged.</p>
-          <a class="button button-quiet magnetic reveal" href="https://github.com/mjumair7/UmairJibransPortfolio/blob/main/AI_USE.md" target="_blank" rel="noopener">Read the full disclosure <span>↗</span></a>
-        </div>
-        <div class="capability-list">
-          <article class="capability reveal"><span class="capability-index mono">GEN</span><div><h3>OpenAI Codex</h3><p>Used for repository review, small patch suggestions, README editing, CI checks, and pull-request preparation. Project ideas, scope, review, and final decisions stay with me.</p></div></article>
-          <article class="capability reveal"><span class="capability-index mono">BOT</span><div><h3>Dependabot</h3><p>Opens dependency-update pull requests. I check the release impact and CI instead of treating an automated PR as an automatic merge.</p></div></article>
-          <article class="capability reveal"><span class="capability-index mono">OPS</span><div><h3>Actions + Mermaid</h3><p>GitHub Actions runs the checks I configured; Mermaid keeps diagrams editable in the repository. They are supporting tools, not AI authors.</p></div></article>
-          <article class="capability reveal"><span class="capability-index mono">APP</span><div><h3>SentriCode's optional explainer</h3><p>One selected, redacted finding can be sent for an AI-assisted explanation. Scanning still works without an AI key, and the explanation cannot hide or fix a finding.</p></div></article>
+    <section class="bench-rules section" id="approach">
+      <div class="container">
+        <div class="bench-rules-shell reveal" data-rule-map data-spotlight>
+          <div class="bench-rules-head">
+            <div class="section-index light"><span>09</span><em>Bench rules</em></div>
+            <p class="mono">MY DEFINITION OF “DONE”</p>
+            <h2>It has to work for someone who was not in the room when it was built.</h2>
+          </div>
+          <div class="rule-map">
+            <article class="bench-rule" data-bench-rule>
+              <span class="mono">01 / TRACE</span>
+              <h3>Follow the whole path.</h3>
+              <p>From sensor or click to validation, state, output, and the person waiting on the other side.</p>
+            </article>
+            <article class="bench-rule" data-bench-rule>
+              <span class="mono">02 / BREAK</span>
+              <h3>Test the awkward case.</h3>
+              <p>Dropped frames, bad input, missing data, rushed volunteers—the failure path belongs in the design.</p>
+            </article>
+            <article class="bench-rule" data-bench-rule>
+              <span class="mono">03 / EXPLAIN</span>
+              <h3>Leave a readable trail.</h3>
+              <p>A useful status, a clear log, and a short handoff beat a clever system nobody else can operate.</p>
+            </article>
+            <article class="bench-rule" data-bench-rule>
+              <span class="mono">04 / SHIP</span>
+              <h3>Name what is unfinished.</h3>
+              <p>The honest prototype is more valuable than a polished claim. Limits and next tests stay visible.</p>
+            </article>
+            <i class="rule-pulse" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
     </section>
@@ -534,6 +564,6 @@
     <div class="container footer-inner"><span>© <span id="yy"></span> Mohammed Umair Jibran</span><span class="mono">STUDENT ENGINEER / WORK IN PROGRESS</span></div>
   </footer>
 
-  <script src="systems-console.js?v=20260929-proof-edit"></script>
+  <script src="systems-console.js?v=20261014-bench-signal"></script>
 </body>
 </html>

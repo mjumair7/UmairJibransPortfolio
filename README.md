@@ -1,6 +1,6 @@
 # Mohammed Umair Jibran
 
-Computer Engineering student at York University and Technology Manager at U+ Education. I like projects that cross a boundary: hardware talking to software, raw data becoming a decision, or a messy manual process turning into a small tool somebody can actually use.
+Computer Engineering student at York University and Technology Manager at U+ Education. I work where hardware, software, data, and delivery stop being separate problems.
 
 **[Open the live portfolio](https://mjumair7.github.io/UmairJibransPortfolio/)** · **[LinkedIn](https://www.linkedin.com/in/mohammed-umair-jibran-87932a2a7/)**
 
@@ -27,7 +27,7 @@ sensor / user input
 | Tap-to-Donate | A volunteer-friendly interface with a strict server-side payment boundary | [Open](https://github.com/mjumair7/tap-to-donate-terminal) |
 | Packing Rule Engine | Turning order and product data into deterministic packing instructions | [Open](https://github.com/mjumair7/shopify-packing-rule-engine) |
 
-The live site includes small interactive explanations instead of pretending every project is a hosted product. The RF demo can mark a tag missing, the payment terminal stays in mock/test mode, and the other demos expose the decision logic behind the project.
+The live site includes small interactive explanations for the work. The RF demo can mark a tag missing, the payment terminal stays in mock/test mode, and the other demos expose the decision logic behind each project.
 
 ## What I work with
 
@@ -47,12 +47,8 @@ I am most interested in embedded systems, hardware-software integration, backend
 - CAN systems and automotive diagnostics;
 - making small technical tools easier to operate and maintain.
 
-## AI and automation
-
-I use AI openly for review and iteration. [My disclosure](AI_USE.md) separates generative help from dependency bots, CI, and diagram tooling, and lists the checks I use before accepting a suggestion.
-
 ## About this repository
 
 The site is plain HTML, CSS, and JavaScript so the implementation stays inspectable. There is no framework build step. Open `index.html` locally or visit the GitHub Pages link above.
 
-No project is finished forever. The repositories include limitations and next steps because those are part of the engineering story too.
+The site is deliberately framework-free: three files, no build step, and no animation dependency. Project limits and next steps stay visible because they are part of the engineering story.

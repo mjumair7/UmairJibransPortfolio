@@ -48,6 +48,16 @@ document.querySelectorAll('.reveal, .reveal-text').forEach(el => revealObserver.
 // The navigation behaves like a chapter marker instead of a generic sticky menu.
 const navbar = document.querySelector('.navbar');
 const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+const chapterCurrent = document.querySelector('[data-chapter-current]');
+const chapterNames = {
+  experience: '02 / EXPERIENCE',
+  moments: '03 / IN THE ROOM',
+  projects: '04 / PROJECTS',
+  resume: '05 / RESUME',
+  skills: '08 / SKILLS',
+  approach: '09 / BENCH RULES',
+  contact: '10 / CONTACT'
+};
 const linkedSections = sectionLinks
   .map(link => document.querySelector(link.getAttribute('href')))
   .filter(Boolean);
@@ -56,17 +66,19 @@ const chapterObserver = new IntersectionObserver(entries => {
     .filter(entry => entry.isIntersecting)
     .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
   if (!visible) return;
+  if (chapterCurrent) chapterCurrent.textContent = chapterNames[visible.target.id] || '00 / TOP';
   sectionLinks.forEach(link => {
     const current = link.getAttribute('href') === `#${visible.target.id}`;
     link.classList.toggle('is-current', current);
     if (current) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
   });
-}, { threshold: [0.18, 0.42, 0.7], rootMargin: '-18% 0px -58% 0px' });
+}, { threshold: 0.01, rootMargin: '-18% 0px -58% 0px' });
 linkedSections.forEach(section => chapterObserver.observe(section));
 
 // Scroll progress + ticker that reacts to scroll direction.
 const progress = document.querySelector('.scroll-progress i');
+const chapterProgress = document.querySelector('[data-chapter-progress]');
 const ticker = document.querySelector('[data-ticker]');
 let lastY = window.scrollY;
 let tickerX = 0;
@@ -76,6 +88,7 @@ const onScroll = () => {
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const ratio = max > 0 ? window.scrollY / max : 0;
   if (progress) progress.style.transform = `scaleX(${ratio})`;
+  if (chapterProgress) chapterProgress.style.transform = `scaleY(${ratio})`;
   navbar?.classList.toggle('is-scrolled', window.scrollY > 42);
   if (!reduceMotion) {
     document.documentElement.style.setProperty('--hero-y', `${Math.min(52, window.scrollY * .075)}px`);
@@ -116,6 +129,28 @@ timelineSteps.forEach(step => timelineObserver.observe(step));
 // Pointer spotlight and restrained 3D movement. Disabled on touch/reduced-motion.
 const finePointer = window.matchMedia('(pointer:fine)').matches;
 if (finePointer && !reduceMotion) {
+  const beacon = document.querySelector('.cursor-beacon');
+  let beaconX = -60;
+  let beaconY = -60;
+  let targetX = -60;
+  let targetY = -60;
+  const moveBeacon = () => {
+    beaconX += (targetX - beaconX) * 0.18;
+    beaconY += (targetY - beaconY) * 0.18;
+    if (beacon) beacon.style.transform = `translate3d(${beaconX - beacon.offsetWidth / 2}px,${beaconY - beacon.offsetHeight / 2}px,0)`;
+    requestAnimationFrame(moveBeacon);
+  };
+  window.addEventListener('pointermove', event => {
+    targetX = event.clientX;
+    targetY = event.clientY;
+    beacon?.classList.add('is-visible');
+  }, { passive: true });
+  document.querySelectorAll('a, button, select, [data-tilt]').forEach(el => {
+    el.addEventListener('pointerenter', () => beacon?.classList.add('is-over'));
+    el.addEventListener('pointerleave', () => beacon?.classList.remove('is-over'));
+  });
+  requestAnimationFrame(moveBeacon);
+
   document.querySelectorAll('[data-spotlight]').forEach(el => {
     el.addEventListener('pointermove', event => {
       const rect = el.getBoundingClientRect();
@@ -143,6 +178,20 @@ if (finePointer && !reduceMotion) {
     });
     el.addEventListener('pointerleave', () => { el.style.transform = ''; });
   });
+}
+
+// The bench rules light up in sequence when the section enters the reading zone.
+for (const map of document.querySelectorAll('[data-rule-map]')) {
+  const rules = [...map.querySelectorAll('[data-bench-rule]')];
+  map.classList.add('is-sequenced');
+  const ruleObserver = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    rules.forEach((rule, index) => {
+      window.setTimeout(() => rule.classList.add('is-ready'), reduceMotion ? 0 : index * 110);
+    });
+    ruleObserver.disconnect();
+  }, { threshold: 0.28 });
+  ruleObserver.observe(map);
 }
 
 // SentriCode miniature: a short scan narrative with deliberate, staged state changes.

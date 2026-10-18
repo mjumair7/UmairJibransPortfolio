@@ -1,187 +1,153 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Umair Jibran — Computer Engineering student and Technology Manager building secure software, embedded systems, and technical programs." />
-  <meta name="author" content="Mohammed Umair Jibran" />
-  <meta property="og:title" content="Umair Jibran | Computer Engineering Portfolio" />
-  <meta property="og:description" content="Security tooling, embedded systems, software, data work, and technical program leadership." />
-  <meta property="og:type" content="website" />
-  <title>Umair Jibran | Computer Engineering Portfolio</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111512'/%3E%3Cpath d='M19 17v19c0 8 4 12 13 12s13-4 13-12V17h-7v19c0 4-2 6-6 6s-6-2-6-6V17z' fill='%23c6ff63'/%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="field-notes.css?v=20261014-responsive-signal" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mohammed Umair Jibran is a Computer Engineering student at York University building embedded systems, useful software, and the teams that deliver them.">
+  <meta name="author" content="Mohammed Umair Jibran">
+  <meta property="og:title" content="Umair Jibran — Engineering in the real world">
+  <meta property="og:description" content="Embedded systems, security tooling, lab work, and project leadership.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1e2926">
+  <title>Umair Jibran — Engineering in the real world</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231e2926'/%3E%3Cpath d='M16 16v23c0 9 5 14 16 14s16-5 16-14V16h-8v23c0 5-2 7-8 7s-8-2-8-7V16z' fill='%23e46242'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="field-notes.css">
+  <script src="systems-console.js" defer></script>
 </head>
 <body>
-  <div class="scroll-progress" aria-hidden="true"><i></i></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="cursor-beacon" aria-hidden="true"><i></i></div>
-  <aside class="chapter-rail" aria-hidden="true">
-    <span class="mono" data-chapter-current>00 / TOP</span>
-    <div class="chapter-rail-track"><i data-chapter-progress></i></div>
-    <small class="mono">SCROLL SIGNAL</small>
-  </aside>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span></span></div>
 
-  <nav class="navbar" aria-label="Primary navigation">
-    <a class="logo magnetic" href="#top" aria-label="Umair Jibran — home">
-      <span class="logo-mark">UJ</span>
-      <span>Umair Jibran</span>
-    </a>
-    <button class="burger" type="button" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#moments">In the room</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#approach">Approach</a></li>
-      <li><a class="nav-cta magnetic" href="#contact">Let’s talk</a></li>
-    </ul>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="identity" href="#top" aria-label="Umair Jibran, back to top"><strong>UJ<span>.</span></strong><small>Engineering / Toronto</small></a>
+    <button class="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false"><span>Menu</span><i aria-hidden="true"></i></button>
+    <div class="nav-links" id="nav-links">
+      <a href="#work">Work</a>
+      <a href="#lab">Lab notes</a>
+      <a href="#current">Leadership</a>
+      <a href="#training">Training</a>
+      <a href="#beyond">Beyond the desk</a>
+      <a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+    </div>
   </nav>
 
-  <main>
+  <main id="main">
     <header class="hero" id="top">
-      <div class="hero-grid container">
-        <div class="hero-copy">
-          <p class="eyebrow reveal"><span class="status-dot"></span> Technology Manager · Computer Engineering</p>
-          <h1 class="hero-title" aria-label="I build systems for the moment the demo becomes real.">
-            <span class="title-line"><span>I build systems</span></span>
-            <span class="title-line"><span>for the moment</span></span>
-            <span class="title-line accent-line"><span>the demo becomes real.</span></span>
-          </h1>
-          <p class="lead reveal">Computer Engineering at York. Technology Manager at U+. I work where hardware, software, data, and delivery stop being separate problems.</p>
-          <div class="hero-actions reveal">
-            <a class="button button-primary magnetic" href="#projects">See the work <span>↓</span></a>
-            <a class="button button-quiet magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">Open resume <span>↗</span></a>
-          </div>
-          <div class="hero-footnote reveal">
-            <span class="mono">TORONTO / 2026</span>
-            <span>Built for the awkward cases. Scroll to test the work.</span>
+      <div class="hero-inner wrap">
+        <div class="hero-main">
+          <p class="eyebrow hero-eyebrow"><span class="signal-dot" aria-hidden="true"></span> Field notes / 2026 <span class="eyebrow-divider">—</span> Mohammed Umair Jibran</p>
+          <h1 class="hero-title"><span class="title-line"><span>Engineering</span></span><span class="title-line"><span>for the <em>real</em></span></span><span class="title-line"><span>world.</span></span></h1>
+          <div class="hero-bottom">
+            <p>I study Computer Engineering at York and work as Technology Manager at U+ Education. I like debugging a board on my desk, but I also like helping a volunteer get a tool working before an event. Both feel like engineering to me.</p>
+            <div class="hero-actions">
+              <a class="text-link light-link" href="#work">Explore the work <span aria-hidden="true">↘</span></a>
+              <a class="text-link light-link" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </div>
-
-        <aside class="signal-card reveal" data-tilt data-spotlight>
-          <div class="signal-topline mono"><span>LIVE / SYSTEM MAP</span><span data-clock>21:20:00</span></div>
-          <div class="signal-stage" data-signal-stage>
-            <svg class="signal-trace" viewBox="0 0 600 240" aria-hidden="true">
-              <path class="trace-grid" d="M0 40H600M0 80H600M0 120H600M0 160H600M0 200H600M75 0V240M150 0V240M225 0V240M300 0V240M375 0V240M450 0V240M525 0V240" />
-              <path class="trace-line" data-trace d="M0 120 C60 120 45 70 95 70 S145 165 190 165 S245 90 295 90 S350 145 402 145 S465 54 515 54 S560 120 600 120" />
-            </svg>
-            <button class="signal-node node-one" type="button" data-signal-node="Embedded">Embedded</button>
-            <button class="signal-node node-two" type="button" data-signal-node="Software">Software</button>
-            <button class="signal-node node-three" type="button" data-signal-node="People">People</button>
-            <button class="signal-node node-four" type="button" data-signal-node="Delivery">Delivery</button>
-            <div class="signal-core"><strong>UJ</strong><small data-signal-label>systems</small></div>
+        <aside class="system-figure" data-active="01" aria-label="A simple model of Umair's working process">
+          <div class="figure-top"><span>FIG. 01 / HOW I WORK</span><span>INPUT → OUTCOME</span></div>
+          <div class="route-stage" data-depth-scene aria-hidden="true">
+            <div class="route-board">
+              <span class="board-id">UJ / PROCESS BOARD · REV 01</span>
+              <span class="board-port board-input">IN</span><span class="board-port board-output">OUT</span>
+              <div class="route-graphic"><span class="route-line"></span><span class="route-point point-a"><b>01</b></span><span class="route-point point-b"><b>02</b></span><span class="route-point point-c"><b>03</b></span><span class="route-point point-d"><b>04</b></span></div>
+              <span class="board-ground">OBSERVE → BUILD → TEST → HAND OFF</span>
+            </div>
           </div>
-          <div class="signal-readout" aria-live="polite">
-            <span class="mono">ACTIVE LAYER / <b data-signal-code>ALL</b></span>
-            <strong data-signal-title>Whole-system thinking</strong>
-            <p data-signal-copy>Trace the signal from a real input to a decision someone can use.</p>
+          <div class="route-steps" role="group" aria-label="Explore working process">
+            <button type="button" class="is-active" data-route="01" aria-pressed="true"><b>01</b><span>Observe</span></button>
+            <button type="button" data-route="02" aria-pressed="false"><b>02</b><span>Build</span></button>
+            <button type="button" data-route="03" aria-pressed="false"><b>03</b><span>Test</span></button>
+            <button type="button" data-route="04" aria-pressed="false"><b>04</b><span>Hand off</span></button>
           </div>
+          <p class="route-copy" data-route-copy aria-live="polite">Start with the actual input: a signal, a user need, or the thing that keeps going wrong.</p>
+          <span class="figure-foot">SELECT A STEP / THIS IS THE THROUGH-LINE</span>
         </aside>
       </div>
-
-      <div class="ticker" aria-label="Areas of practice">
-        <div class="ticker-track" data-ticker>
-          <span>Security tooling</span><i></i><span>C / C++</span><i></i><span>CAN-FD</span><i></i><span>STM32</span><i></i><span>Python</span><i></i><span>Data</span><i></i><span>Program delivery</span><i></i><span>Node.js</span><i></i><span>Systems thinking</span><i></i>
-          <span aria-hidden="true">Security tooling</span><i></i><span>C / C++</span><i></i><span>CAN-FD</span><i></i><span>STM32</span><i></i><span>Python</span><i></i><span>Data</span><i></i><span>Program delivery</span><i></i><span>Node.js</span><i></i><span>Systems thinking</span><i></i>
-        </div>
-      </div>
-
-      <div class="bench-strip" aria-label="How Umair moves a project forward">
-        <div class="bench-strip-track">
-          <span><b>INPUT</b> loose brief</span><i>→</i><span><b>01</b> find the constraint</span><i>→</i><span><b>02</b> build the smallest real slice</span><i>→</i><span><b>03</b> break the edge case</span><i>→</i><span><b>OUTPUT</b> usable handoff</span>
-          <span aria-hidden="true"><b>INPUT</b> loose brief</span><i aria-hidden="true">→</i><span aria-hidden="true"><b>01</b> find the constraint</span><i aria-hidden="true">→</i><span aria-hidden="true"><b>02</b> build the smallest real slice</span><i aria-hidden="true">→</i><span aria-hidden="true"><b>03</b> break the edge case</span><i aria-hidden="true">→</i><span aria-hidden="true"><b>OUTPUT</b> usable handoff</span>
-        </div>
-      </div>
+      <div class="hero-footer wrap"><span>Hardware <i>↔</i> software <i>↔</i> people</span><span>Scroll to inspect <b aria-hidden="true">↓</b></span></div>
     </header>
 
-    <section class="intro section" id="about">
-      <div class="container intro-grid">
-        <div class="section-index reveal"><span>01</span><em>About</em></div>
-        <div class="about-copy">
-          <h2 class="statement reveal-text">Give me something real enough to fail.</h2>
-          <div class="body-columns reveal">
-            <p>If I am learning a protocol, I want to wire it up, send real messages through it, break it on purpose, and watch the system recover. That instinct has taken me from embedded test benches to websites, data projects, payment hardware, and tools used by community teams.</p>
-            <p>Outside engineering, the gym is where I reset. Training taught me to respect boring consistency — useful when a project is less “big idea” and more 47 small decisions that all have to be right.</p>
-          </div>
-          <div class="about-facts reveal" aria-label="A few facts about Umair">
-            <span><strong>2028</strong> B.Eng. expected</span>
-            <span><strong>5</strong> roles at U+ since 2025</span>
+    <section class="intro-section section-pad" id="about">
+      <div class="wrap intro-grid">
+        <p class="folio-label" data-reveal>01 / INTRODUCTION</p>
+        <div data-reveal>
+          <h2 class="editorial-heading">Give me something <em>real enough to fail.</em></h2>
+          <div class="intro-copy">
+            <p>If I’m learning a protocol, I want to wire it up, send real messages through it, break it on purpose, and watch the system recover. That instinct has taken me from embedded test benches to security tooling, payment hardware, and tools used by community teams.</p>
+            <p>I care about the handoff as much as the build. A system is only useful if the next person can understand what happened and what to do.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="timeline-section section" id="experience">
-      <div class="container">
-        <div class="section-head split-headline">
-          <div class="section-index reveal"><span>02</span><em>Experience</em></div>
-          <div>
-            <h2 class="reveal-text">One organization.<br />A scope that kept growing.</h2>
-            <p class="reveal">I joined U+ through an eight-month co-op. The website stayed part of the job; the scope grew into data supervision, operations, project planning, and technology leadership.</p>
-          </div>
+    <section class="work-section section-pad" id="work">
+      <div class="wrap">
+        <div class="section-opening" data-reveal>
+          <p class="folio-label">02 / SELECTED WORK</p>
+          <div><h2 class="editorial-heading">Case files from the <em>messy middle.</em></h2><p class="section-deck">Actual questions, engineering decisions, and a few small interaction models. Project visuals are diagrams and sample states; they are not product screenshots.</p></div>
         </div>
+        <div class="case-layout">
+          <nav class="case-index" aria-label="Jump to a project">
+            <span class="case-index-title">INDEX / 06</span>
+            <a href="#sentricode" data-case-link="sentricode"><b>01</b> SentriCode</a>
+            <a href="#can-bench" data-case-link="can-bench"><b>02</b> CAN-FD bench</a>
+            <a href="#rf-finder" data-case-link="rf-finder"><b>03</b> RF Asset Finder</a>
+            <a href="#tap-to-donate" data-case-link="tap-to-donate"><b>04</b> Tap-to-Donate</a>
+            <a href="#split" data-case-link="split"><b>05</b> Split</a>
+            <a href="#packing" data-case-link="packing"><b>06</b> Packing rules</a>
+          </nav>
+          <div class="case-list">
+            <article class="case-study" id="sentricode" data-reveal>
+              <div class="case-head"><span>01 / SECURITY TOOLING</span><span>Local-first workbench</span></div>
+              <div class="case-content"><div><h3>Sentri<span>Code</span></h3><p class="case-question">How do you turn a scanner finding into a decision someone can track?</p><p>I built a workbench that brings source, secret, configuration, and dependency findings into one review flow. Safe input handling, redacted evidence, scan history, policy checks, and visible engine status make the result easier to trust.</p><a class="text-link" href="https://github.com/mjumair7/sentricode-security-workbench" target="_blank" rel="noopener">Explore the repository <span aria-hidden="true">↗</span></a></div><div class="case-aside"><span>THE PART I CARE ABOUT</span><p>A skipped check has to look different from a clean result.</p><small>PYTHON · FASTAPI · NEXT.JS · DOCKER</small></div></div>
+              <div class="case-visual sentri-visual" data-reveal aria-label="Illustrative SentriCode finding workflow">
+                <div class="visual-caption"><span>WORKFLOW MODEL</span><span>ILLUSTRATIVE / NOT A LIVE SCAN</span></div>
+                <div class="sentri-flow"><div><small>INPUT / 01</small><strong>Source</strong><span>directory · ZIP · public repo</span></div><i aria-hidden="true">→</i><div><small>CHECK / 02</small><strong>Engines</strong><span>run · skip · fail</span></div><i aria-hidden="true">→</i><div class="sentri-emphasis"><small>OUTPUT / 03</small><strong>Finding</strong><span>evidence · severity · status</span></div><i aria-hidden="true">→</i><div><small>DECIDE / 04</small><strong>Review</strong><span>owner · baseline · follow-up</span></div></div>
+              </div>
+            </article>
 
-        <div class="timeline-layout">
-          <aside class="timeline-summary reveal">
-            <span class="mono timeline-company">U+ EDUCATION</span>
-            <strong>May 2025 → present</strong>
-            <p>Co-op student to Technology Manager. Several responsibilities overlapped as the scope expanded.</p>
-            <div class="timeline-meter"><i data-timeline-meter></i></div>
-            <small class="mono">scroll to trace the progression</small>
-          </aside>
+            <article class="case-study" id="can-bench" data-reveal>
+              <div class="case-head"><span>02 / EMBEDDED SYSTEMS</span><span>Hardware bench</span></div>
+              <div class="case-content"><div><h3>CAN-FD <span>test bench</span></h3><p class="case-question">What should an actuator do when the next frame never arrives?</p><p>I built a two-STM32 bench with FreeRTOS: one controller sends temperature and RPM data over CAN-FD; the other validates identity, integrity, and freshness before controlling a fan. A Python harness captures traffic and injects delayed or dropped frames to check timeout, fail-safe, and recovery behaviour.</p></div><div class="case-aside"><span>BENCH NOTE</span><p>Normal behaviour is the easy part. I test the stale and missing message path.</p><small>STM32 · C/C++ · FREERTOS · PYTHON</small></div></div>
+              <div class="case-visual can-visual" data-reveal data-can-demo>
+                <div class="visual-caption"><span>INTERACTION MODEL / CAN-FD</span><span data-can-state role="status">NORMAL FRAMES</span></div>
+                <div class="can-diagram"><div class="ecu-block"><small>SENSOR ECU</small><strong>24.2 °C</strong><span>RPM 1240</span></div><div class="can-bus"><span class="bus-packet" aria-hidden="true"></span><small>CAN-FD BUS</small></div><div class="ecu-block actuator"><small>ACTUATOR ECU</small><strong data-can-output>FAN 42%</strong><span data-can-detail>fresh frame accepted</span></div></div>
+                <div class="demo-footer"><p class="mono" data-can-log>0x244 / RPM 1240 / CRC OK</p><div class="demo-actions"><button type="button" data-can-mode="normal" aria-pressed="true">Normal</button><button type="button" data-can-mode="fault" aria-pressed="false">Drop frame</button></div></div>
+              </div>
+            </article>
 
-          <div class="timeline" data-timeline>
-            <div class="timeline-rail"><i class="timeline-progress"></i></div>
-            <article class="timeline-step" data-period="01">
-              <div class="timeline-marker">01</div>
-              <div class="timeline-card">
-                <p class="timeline-date">May – Dec 2025 · 8-month co-op</p>
-                <h3>Website Development Coordinator & Teaching Assistant</h3>
-                <p>Coordinated website updates, supported students in class, and learned how to turn loose requests into technical work a team could actually deliver.</p>
-                <div class="timeline-tags"><span>Web coordination</span><span>Teaching support</span><span>Requirements</span></div>
+            <article class="case-study" id="rf-finder" data-reveal>
+              <div class="case-head"><span>03 / RADIO PROTOCOLS</span><span>Prototype</span></div>
+              <div class="case-content"><div><h3>RF Asset <span>Finder</span></h3><p class="case-question">How do you know a silent tag is missing rather than just late?</p><p>I built a 433 MHz tag and base station with device IDs, sequence numbers, CRC-16 checks, acknowledgements, retries, and a missing-tag timeout. Desktop tests cover corrupt frames, duplicate sequences, invalid packet types, and timeout state.</p><a class="text-link" href="https://github.com/mjumair7/rf-asset-finder" target="_blank" rel="noopener">Explore the repository <span aria-hidden="true">↗</span></a></div><div class="case-aside"><span>PROTOCOL NOTE</span><p>The packet rules do the explaining when the radio link is imperfect.</p><small>ARDUINO · C++ · 433 MHZ RF</small></div></div>
+              <div class="case-visual rf-visual" data-reveal data-rf-demo>
+                <div class="visual-caption"><span>INTERACTION MODEL / RECEIVER</span><span data-rf-summary role="status">3 TAGS SEEN</span></div>
+                <div class="rf-layout"><div class="rf-base"><span class="radio-rings" aria-hidden="true"></span><strong>BASE</strong><small>RX / 433 MHz</small></div><div class="rf-list"><div data-rf-tag="1"><b>TAG 01</b><span>CRC OK</span></div><div data-rf-tag="2"><b>TAG 02</b><span>CRC OK</span></div><div data-rf-tag="3"><b>TAG 03</b><span>CRC OK</span></div></div></div>
+                <div class="demo-footer"><p class="mono">A missing acknowledgement starts the retry path.</p><div class="demo-actions"><button type="button" data-rf-mode="fault">Simulate timeout</button><button type="button" data-rf-mode="reset">Reset</button></div></div>
               </div>
             </article>
-            <article class="timeline-step" data-period="02">
-              <div class="timeline-marker">02</div>
-              <div class="timeline-card">
-                <p class="timeline-date">Sep – Dec 2025 · overlapping responsibility</p>
-                <h3>Volunteer Supervisor</h3>
-                <p>Began leading volunteers directly: assigning projects, checking progress, giving practical feedback, and helping people get work across the finish line.</p>
-                <div class="timeline-tags"><span>Delegation</span><span>Progress reviews</span><span>Mentorship</span></div>
-              </div>
+
+            <article class="case-study compact-case" id="tap-to-donate" data-reveal>
+              <div class="case-head"><span>04 / COMMUNITY TECHNOLOGY</span><span>Live event tool</span></div>
+              <div class="case-content"><div><h3>Tap-to-<span>Donate</span></h3><p class="case-question">A payment flow a volunteer can run under event pressure.</p><p>I built the interface and server-side Stripe integration around WisePOS/BBPOS hardware, then trained volunteers and troubleshot the setup during live events. The server owns payment creation; the public interface never handles raw card data.</p><a class="text-link" href="https://github.com/mjumair7/tap-to-donate-terminal" target="_blank" rel="noopener">Explore the repository <span aria-hidden="true">↗</span></a></div><div class="case-aside"><span>DESIGN BOUNDARY</span><p>Make the next action obvious without weakening the payment boundary.</p><small>STRIPE · JAVASCRIPT · TERMINAL HARDWARE</small></div></div>
+              <div class="inline-flow" data-reveal aria-label="Payment flow diagram"><span>Volunteer chooses amount</span><i aria-hidden="true">→</i><span>Server creates payment</span><i aria-hidden="true">→</i><span>Reader confirms result</span></div>
             </article>
-            <article class="timeline-step" data-period="03">
-              <div class="timeline-marker">03</div>
-              <div class="timeline-card">
-                <p class="timeline-date">Jan – Apr 2026 · contract extension</p>
-                <h3>Website Developer & Data Analyst Volunteer Supervisor</h3>
-                <p>Maintained the site while reviewing analytical work, clarifying priorities, and supporting volunteers through delivery.</p>
-                <div class="timeline-tags"><span>Power BI</span><span>Data review</span><span>Technical delivery</span></div>
-              </div>
+
+            <article class="case-study compact-case" id="split" data-reveal>
+              <div class="case-head"><span>05 / PRODUCT SOFTWARE</span><span>Workout tracker</span></div>
+              <div class="case-content"><div><h3>Split <span>workout tracker</span></h3><p class="case-question">Training data should remain useful after the session ends.</p><p>I modelled programs, exercises, logs, sets, and progress records in PostgreSQL and Prisma. The REST API keeps the web and mobile clients working from the same training history.</p><a class="text-link" href="https://github.com/mjumair7/SPLIT" target="_blank" rel="noopener">Explore the repository <span aria-hidden="true">↗</span></a></div><div class="case-aside"><span>DATA NOTE</span><p>The hard part is keeping edits consistent across records, not drawing another chart.</p><small>NODE.JS · POSTGRESQL · PRISMA</small></div></div>
+              <div class="inline-flow split-flow" data-reveal aria-label="Workout data model"><span>Program</span><i aria-hidden="true">→</i><span>Session</span><i aria-hidden="true">→</i><span>Set log</span><i aria-hidden="true">→</i><span>Progress</span></div>
             </article>
-            <article class="timeline-step" data-period="04">
-              <div class="timeline-marker">04</div>
-              <div class="timeline-card">
-                <p class="timeline-date">Jul – Aug 2026 · full-time contract</p>
-                <h3>Office Manager</h3>
-                <p>Ran daily operations in Markham, set priorities for a cross-functional team, led weekly meetings, and stepped in when projects or people were blocked.</p>
-                <div class="timeline-tags"><span>Operations</span><span>Meetings</span><span>Issue resolution</span></div>
-              </div>
-            </article>
-            <article class="timeline-step" data-period="05">
-              <div class="timeline-marker">05</div>
-              <div class="timeline-card">
-                <p class="timeline-date">Sep 2026 → present</p>
-                <h3>Technology Manager</h3>
-                <p>Set technology priorities across projects, manage work in Jira and GitHub, supervise volunteer leads, report risks and dependencies, and keep web, data, and operational work moving in the same direction.</p>
-                <div class="timeline-tags"><span>Technology strategy</span><span>Project planning</span><span>Cross-functional leadership</span></div>
+
+            <article class="case-study" id="packing" data-reveal>
+              <div class="case-head"><span>06 / OPERATIONS SOFTWARE</span><span>Adopted workflow</span></div>
+              <div class="case-content"><div><h3>Packing <span>rule engine</span></h3><p class="case-question">How do you translate messy order data into a clear packing instruction?</p><p>For Islamic Books &amp; Souvenirs, I joined order JSON with product-dimension CSV data, validated inputs, and wrote deterministic packaging rules. I tested the output with staff and documented the workflow so it could be used without a developer beside it.</p><a class="text-link" href="https://github.com/mjumair7/shopify-packing-rule-engine" target="_blank" rel="noopener">Explore the repository <span aria-hidden="true">↗</span></a></div><div class="case-aside"><span>OPERATIONS NOTE</span><p>A rule is only useful if the instruction at the end is readable on a busy packing table.</p><small>NODE.JS · JSON/CSV · RULE LOGIC</small></div></div>
+              <div class="case-visual order-visual" data-reveal data-order-demo>
+                <div class="visual-caption"><span>INTERACTION MODEL / SAMPLE DATA</span><span>NO SHOPIFY CONNECTION</span></div>
+                <div class="order-workspace"><div><label for="sample-order">Select a sample order</label><select id="sample-order" data-order-select><option value="books">Two books</option><option value="gift">Gift order</option><option value="bulk">Five books</option></select><button type="button" data-order-run>Run rules <span aria-hidden="true">→</span></button></div><div class="packing-slip" aria-live="polite"><small>PACKING INSTRUCTION</small><strong data-order-package>Mailer M2</strong><p data-order-steps>Wrap books · Add bookmark · Print label</p></div></div>
               </div>
             </article>
           </div>
@@ -189,399 +155,78 @@
       </div>
     </section>
 
-    <section class="moments-section section" id="moments">
-      <div class="container">
-        <div class="moments-heading">
-          <div class="section-index reveal"><span>03</span><em>In the room</em></div>
-          <div class="moments-heading-copy">
-            <h2 class="reveal-text">A portfolio should show what happens after the laptop closes.</h2>
-            <p class="reveal">Speaking, representing a team, and running live technology taught me a different side of engineering: read the room, communicate clearly, and make the system work when people are already waiting.</p>
+    <section class="lab-section section-pad" id="lab">
+      <div class="wrap">
+        <div class="section-opening" data-reveal><p class="folio-label">03 / IN THE LAB</p><div><h2 class="editorial-heading">I want to see the <em>failure mode.</em></h2><p class="section-deck">My lab work is where circuit behaviour, firmware timing, and test evidence meet. These are the methods I have practised, not a list of instruments I only recognize by name.</p></div></div>
+        <div class="bench-display" data-reveal data-depth-scene aria-label="Illustrative oscilloscope-style view of a signal timing out and an actuator entering a safe state">
+          <div class="bench-screen">
+            <div class="bench-screen-top"><span>BENCH VIEW / SIGNAL FRESHNESS</span><span>ILLUSTRATIVE · NOT CAPTURED DATA</span></div>
+            <svg class="scope-trace" viewBox="0 0 900 300" role="img" aria-label="Repeated incoming frames stop, then the timeout window ends and the output changes to a safe state">
+              <path class="scope-reference" d="M35 206 H865"/>
+              <path class="scope-wave" d="M35 206 H80 V115 H116 V206 H196 V115 H232 V206 H312 V115 H348 V206 H428 V115 H464 V206 H550 V115 H586 V206 H638"/>
+              <path class="scope-safe" d="M638 206 H687 V246 H865"/>
+              <path class="scope-marker" d="M638 42 V258"/>
+              <circle class="scope-end" cx="638" cy="206" r="6"/>
+            </svg>
+            <div class="scope-ticks"><span>FRAME 01</span><span>FRAME 02</span><span>FRAME 03</span><span>FRAME 04</span><span>LAST FRAME</span><span>TIMEOUT → SAFE</span></div>
+            <div class="scope-scan" aria-hidden="true"></div>
           </div>
+          <div class="bench-side"><span class="bench-side-title">WHAT THE TRACE ASKS</span><strong>When does “late” become “unsafe”?</strong><p>A real bench test is more than a green LED. I look at the timing, the decision at the boundary, and whether the system recovers cleanly afterward.</p><span class="bench-readout"><i aria-hidden="true"></i> INPUT LOST / OUTPUT SAFE</span></div>
         </div>
+        <div class="lab-ledger">
+          <article data-reveal><span class="ledger-no">01</span><div><h3>Measure the circuit</h3><p>In electrical and electronic circuits coursework, I use oscilloscopes and digital multimeters to measure signals, compare readings with expected behaviour, and work back through a schematic when the circuit disagrees with the calculation.</p><small>Oscilloscope / DMM / schematics / analog &amp; digital circuits</small></div></article>
+          <article data-reveal><span class="ledger-no">02</span><div><h3>Bring up the interface</h3><p>With STM32 and Arduino projects, I connect sensors and actuators, check the data crossing each interface, and debug the path from an input reading to an output action. I have worked with CAN-FD, UART, SPI, I²C, and 433 MHz radio links.</p><small>Microcontrollers / buses / sensors / actuators</small></div></article>
+          <article data-reveal><span class="ledger-no">03</span><div><h3>Test the bad day</h3><p>On the CAN-FD bench, Python tests capture traffic and inject missing or delayed frames. On the RF prototype, packet tests exercise CRC failures, duplicates, retries, and timeouts. I check the recovery path as carefully as the normal path.</p><small>Fault injection / bus logging / automated checks / recovery</small></div></article>
+        </div>
+        <p class="lab-footnote" data-reveal>Current foundation: lab coursework and independently built benches. I’m continuing to develop deeper hardware validation practice.</p>
+      </div>
+    </section>
 
-        <div class="moments-layout">
-          <aside class="moments-ledger reveal" aria-label="Selected moments progress">
-            <span class="mono">FIELD NOTES / 2026</span>
-            <strong><span data-moment-current>01</span> / 04</strong>
-            <div class="moments-ledger-line"><i data-moments-meter></i></div>
-            <p>Not every technical skill is visible in a code diff.</p>
-          </aside>
-
-          <div class="moment-stack">
-            <article class="moment-story speaker-story" data-moment="01">
-              <div class="moment-type mono">01 / SPEAK</div>
-              <div class="speaker-panel">
-                <span class="speaker-mark" aria-hidden="true">“</span>
-                <p class="mono speaker-kicker">OACAO AGING WELL CONFERENCE</p>
-                <h3>Selected speaker.</h3>
-                <p>Chosen to represent U+ Education at a provincial conference — an opportunity to explain the work clearly outside the team that built it.</p>
-                <div class="speaker-footer"><span>Presenting</span><span>Representation</span><span>Public communication</span></div>
-              </div>
-            </article>
-
-            <article class="moment-story photo-story moment-mayor" data-moment="02">
-              <div class="moment-type mono">02 / REPRESENT</div>
-              <figure class="moment-frame" data-moment-parallax>
-                <img src="assets/field-note-mayors-luncheon.jpg" alt="A community luncheon event" loading="lazy" />
-                <figcaption><span class="mono">MAYOR'S LUNCHEON</span><span>community engagement</span></figcaption>
-              </figure>
-              <div class="moment-copy">
-                <h3>Showing up beyond the project.</h3>
-                <p>Representing U+ Education at a mayor’s luncheon and taking part in community conversations outside the usual office setting.</p>
-              </div>
-            </article>
-
-            <article class="moment-story photo-story moment-csj" data-moment="03">
-              <div class="moment-type mono">03 / COMMUNITY</div>
-              <figure class="moment-frame" data-moment-parallax>
-                <img src="assets/field-note-community-recognition.jpg" alt="A certificate presentation at a community celebration" loading="lazy" />
-                <figcaption><span class="mono">CSJ / MP CELEBRATION</span><span>community recognition</span></figcaption>
-              </figure>
-              <div class="moment-copy">
-                <h3>Representing the organization.</h3>
-                <p>Attending a Canada Summer Jobs community celebration on behalf of U+ Education and receiving a certificate of appreciation for the organization’s work.</p>
-              </div>
-            </article>
-
-            <article class="moment-story photo-story moment-av" data-moment="04">
-              <div class="moment-type mono">04 / LIVE OPS</div>
-              <figure class="moment-frame" data-moment-parallax>
-                <img src="assets/field-note-live-av-ops.jpg" alt="An AV control station during a live event" loading="lazy" />
-                <figcaption><span class="mono">AV CONTROL</span><span>live technical operations</span></figcaption>
-              </figure>
-              <div class="moment-copy">
-                <h3>When “debug later” is not an option.</h3>
-                <p>Leading technical operations for large live events meant managing AV systems, cues, volunteers, and troubleshooting in real time — including three events with 500+ attendees.</p>
-              </div>
-            </article>
+    <section class="leadership-section section-pad" id="current">
+      <div class="wrap leadership-grid">
+        <div data-reveal><p class="folio-label">04 / CURRENT ROLE</p><h2 class="editorial-heading">The work also has to <em>get delivered.</em></h2><p class="leadership-intro">Technology Manager at U+ Education <span> / Sep 2026 → present</span></p></div>
+        <div class="leadership-body" data-reveal>
+          <p class="leadership-lead">I turn broad requests into work that a team can actually move: what needs to happen, who owns it, how we know it is done, and what could block it.</p>
+          <div class="leadership-rows">
+            <div><b>01 / Frame</b><p>Turn requests for the U+ website, volunteer hub, and internal inventory app into requirements and Jira or GitHub tasks. Set priorities, milestones, owners, and the next decision point.</p></div>
+            <div><b>02 / Lead</b><p>Assign web, data, and software projects to volunteer leads and contributors. Run check-ins, review Power BI dashboards and app work, and resolve blockers with the team.</p></div>
+            <div><b>03 / Ship</b><p>QA-test site and app releases, track risks and dependencies, and document the handoff. I have also standardized recurring Slack, monday.com, and Calendly workflows.</p></div>
           </div>
+          <p class="leadership-note">A different kind of project: I co-authored a phased youth drone program plan, defining milestones, ownership, risk controls, and a baseline budget. It is planning work, not a claim that the program has already run.</p>
         </div>
       </div>
     </section>
 
-    <section class="work-section section" id="projects">
-      <div class="container">
-        <div class="section-head work-heading">
-          <div class="section-index reveal"><span>04</span><em>Projects</em></div>
-          <div>
-            <h2 class="reveal-text">Built to answer a question,<br />not to fill a portfolio.</h2>
-            <p class="reveal">Each project starts with the problem, then shows a small working slice of the system. Try the demos — they explain more than another screenshot would.</p>
-          </div>
-        </div>
-
-        <nav class="project-directory reveal" aria-label="Jump to a project">
-          <span class="mono">CASE FILES</span>
-          <a href="#project-sentricode" data-project-link="project-sentricode"><b>01</b> SentriCode</a>
-          <a href="#project-can" data-project-link="project-can"><b>02</b> CAN-FD</a>
-          <a href="#project-rf" data-project-link="project-rf"><b>03</b> RF Finder</a>
-          <a href="#project-tap" data-project-link="project-tap"><b>04</b> Tap-to-Donate</a>
-          <a href="#project-split" data-project-link="project-split"><b>05</b> Split</a>
-          <a href="#project-shopify" data-project-link="project-shopify"><b>06</b> Shopify</a>
-        </nav>
-
-        <div class="work-grid">
-          <article class="work-card work-feature work-sentricode reveal" id="project-sentricode" data-project-card data-spotlight>
-            <div class="project-demo sentricode-surface" data-sentricode-demo>
-              <aside class="sentri-sidebar" aria-hidden="true">
-                <div class="sentri-brand"><span class="sentri-shield">S</span><strong>Sentri<span>Code</span></strong></div>
-                <div class="sentri-nav-label">WORKBENCH</div>
-                <div class="sentri-nav-item is-active"><i></i>Overview</div>
-                <div class="sentri-nav-item"><i></i>Findings <b data-sentri-count>3</b></div>
-                <div class="sentri-nav-item"><i></i>Dependencies</div>
-                <div class="sentri-nav-item"><i></i>Scan history</div>
-                <div class="sentri-engine"><span></span><small>Local engines ready</small></div>
-              </aside>
-              <div class="sentri-main">
-                <div class="sentri-topline">
-                  <div><span class="mono">PROJECT / PORTFOLIO</span><strong>Security overview</strong></div>
-                  <span class="sentri-state" data-sentri-state role="status" aria-live="polite">Ready</span>
-                </div>
-                <div class="sentri-score-row">
-                  <div class="sentri-score"><span data-sentri-score>86</span><small>posture</small></div>
-                  <div class="sentri-metric critical"><small>CRITICAL</small><strong data-sentri-critical>0</strong></div>
-                  <div class="sentri-metric high"><small>HIGH</small><strong data-sentri-high>1</strong></div>
-                  <div class="sentri-metric medium"><small>MEDIUM</small><strong data-sentri-medium>2</strong></div>
-                </div>
-                <div class="sentri-finding" data-sentri-finding>
-                  <div class="finding-severity">HIGH</div>
-                  <div><small>SECRET DETECTION · CONFIG</small><strong>Credential pattern in example environment file</strong><p>Evidence is redacted. Rotate the value and move it to runtime configuration.</p></div>
-                  <span class="finding-status">Review</span>
-                </div>
-                <div class="sentri-scanline"><i data-sentri-progress></i></div>
-                <div class="sentri-actions">
-                  <span class="mono" data-sentri-log>6 engines available · no files leave this device</span>
-                  <button type="button" data-sentri-run>Run demo scan</button>
-                </div>
-              </div>
-            </div>
-            <div class="work-copy">
-              <div class="work-meta"><span>Application security</span><span>v0.1 · Local-first</span></div>
-              <h3>SentriCode</h3>
-              <p>A single-owner security workbench that connects a finding to the next decision. It combines source checks, redacted secret detection, dependency inventory, scan history, policy checks, a CLI, and a private dashboard.</p>
-              <div class="project-notes" aria-label="SentriCode design priorities">
-                <span><b>01</b> Show the evidence</span>
-                <span><b>02</b> Explain the risk</span>
-                <span><b>03</b> Track the decision</span>
-              </div>
-              <div class="work-tags"><span>Python</span><span>FastAPI</span><span>Next.js</span><span>TypeScript</span><span>Docker</span><span>Static analysis</span><span>SBOM</span></div>
-            </div>
-          </article>
-
-          <article class="work-card work-hero reveal" id="project-can" data-tilt data-spotlight>
-            <div class="project-demo can-demo" data-can-demo>
-              <div class="demo-chrome"><span class="mono">CAN-FD / BENCH</span><span class="demo-state" data-can-state>Normal</span></div>
-              <div class="can-network">
-                <div class="ecu"><small>SENSOR ECU</small><strong>24.2°C</strong><span>RPM 1240</span></div>
-                <div class="can-line"><i class="can-packet"></i></div>
-                <div class="ecu"><small>ACTUATOR ECU</small><strong data-can-actuator-text>Fan output: 42%</strong><span data-can-actuator>fresh frames</span></div>
-              </div>
-              <div class="demo-log mono" data-can-log><span>0x181 TEMP 24.2 CRC OK</span><span>0x244 RPM 1240 CRC OK</span><span>0x310 FAN 42% ACK</span></div>
-              <div class="demo-controls"><button type="button" data-can-action="normal">Normal</button><button type="button" data-can-action="run">Stream</button><button type="button" data-can-action="fault">Drop RPM frame</button></div>
-            </div>
-            <div class="work-copy">
-              <div class="work-meta"><span>Embedded systems</span><span>Completed</span></div>
-              <h3>CAN-FD ECU Diagnostic Test Bench</h3>
-              <p>Two STM32 controllers, FreeRTOS, CAN-FD, and a Python validation station. The test harness captures traffic, injects dropped or delayed frames, and verifies timeout handling, fail-safe behaviour, and recovery.</p>
-              <div class="work-tags"><span>STM32</span><span>C/C++</span><span>FreeRTOS</span><span>CAN-FD</span><span>Python</span></div>
-            </div>
-          </article>
-
-          <article class="work-card reveal" id="project-rf" data-tilt data-spotlight>
-            <div class="project-demo rf-surface" data-rf-demo>
-              <div class="demo-chrome"><span class="mono">433 MHz / LAB</span><span data-rf-summary>3 tags online</span></div>
-              <div class="rf-demo-map">
-                <div class="rf-demo-base">BASE</div>
-                <div class="rf-demo-tag" data-rf-tag="1"><strong>TAG-01</strong><span>Seen 0.2s ago</span></div>
-                <div class="rf-demo-tag" data-rf-tag="2"><strong>TAG-02</strong><span>Seen 0.4s ago</span></div>
-                <div class="rf-demo-tag" data-rf-tag="3"><strong>TAG-03</strong><span>Seen 0.6s ago</span></div>
-              </div>
-              <div class="demo-controls"><button type="button" data-rf-action="scan">Scan</button><button type="button" data-rf-action="missing">Simulate timeout</button><button type="button" data-rf-action="reset">Reset</button></div>
-            </div>
-            <div class="work-copy">
-              <div class="work-meta"><span>Embedded + RF</span><span>Prototype</span></div>
-              <h3>RF Asset Finder</h3>
-              <p>A low-power tag and base station with device IDs, CRC validation, acknowledgements, and retransmission logic for identifying shared equipment over a simple, imperfect RF link.</p>
-              <div class="work-tags"><span>Arduino</span><span>C/C++</span><span>433 MHz</span><span>Custom protocol</span></div>
-            </div>
-          </article>
-
-          <article class="work-card reveal" id="project-tap" data-tilt data-spotlight>
-            <div class="project-demo payment-surface" data-payment-demo>
-              <div class="payment-terminal">
-                <div class="payment-screen" data-payment-screen><small>DEMO TERMINAL</small><strong>Select amount</strong><span>No real payment is processed</span></div>
-                <i class="payment-led"></i>
-              </div>
-              <div class="amount-row"><button type="button" data-amount="5">$5</button><button type="button" data-amount="10">$10</button><button type="button" data-amount="20">$20</button></div>
-              <button class="demo-primary" type="button" data-payment-tap>Simulate tap</button>
-            </div>
-            <div class="work-copy">
-              <div class="work-meta"><span>Hardware × software</span><span>Deployed</span></div>
-              <h3>Tap-to-Donate</h3>
-              <p>WisePOS/BBPOS hardware, Stripe, and JavaScript built for live community events — designed so volunteers could take card donations without wrestling with a complicated setup.</p>
-              <div class="work-tags"><span>Stripe</span><span>WisePOS</span><span>JavaScript</span><span>Live deployment</span></div>
-            </div>
-          </article>
-
-          <article class="work-card reveal" id="project-split" data-tilt data-spotlight>
-            <div class="project-demo split-surface" data-split-demo>
-              <div class="split-head"><span>Bench press</span><small>sample session</small></div>
-              <div class="split-bars"><i style="--bar:45%"><span>76</span></i><i style="--bar:54%"><span>79</span></i><i style="--bar:65%"><span>82</span></i><i class="current-bar" style="--bar:72%"><span data-split-weight>84</span></i></div>
-              <div class="split-entry"><button type="button" data-weight-action="down">−</button><output data-split-output>84 kg × 5</output><button type="button" data-weight-action="up">+</button></div>
-              <button class="demo-primary" type="button" data-log-set>Log sample set</button>
-              <p class="demo-message" data-split-message>Adjust the weight and log a set.</p>
-            </div>
-            <div class="work-copy">
-              <div class="work-meta"><span>Product software</span><span>Full stack</span></div>
-              <h3>Split Workout Tracker</h3>
-              <p>A workout tracker for programs, exercises, logs, sets, and progress records. I designed the relational data model and REST API flow to keep web and mobile clients consistent.</p>
-              <div class="work-tags"><span>PostgreSQL</span><span>Prisma</span><span>Node.js</span><span>REST APIs</span></div>
-              <div class="split-easter-wrap">
-                <button class="split-easter-egg" type="button" data-split-easter-egg aria-expanded="false">personal stat +</button>
-                <span class="split-secret" data-split-secret aria-hidden="true"><strong>315 lb</strong> bench PR</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card work-wide reveal" id="project-shopify" data-tilt data-spotlight>
-            <div class="project-demo order-surface" data-order-demo>
-              <div class="demo-chrome"><span class="mono">ORDER ANALYZER</span><span>rule engine</span></div>
-              <div class="order-input"><label for="sample-order">Order</label><select id="sample-order" data-order-select><option value="1048">#1048 — 2 books</option><option value="1052">#1052 — gift order</option><option value="1061">#1061 — 5 books</option></select><button type="button" data-order-run>Analyze</button></div>
-              <div class="order-output" data-order-output><small>PACKING INSTRUCTION</small><strong>Mailer M2</strong><span>Wrap books · Add bookmark · Print label</span></div>
-            </div>
-            <div class="work-copy">
-              <div class="work-meta"><span>Operations tool</span><span>Deployed</span></div>
-              <h3>Shopify Order Analyzer</h3>
-              <p>A Node.js tool that reads Shopify order and product-dimension data, checks selected items against packaging rules, and produces clear packing instructions for non-technical staff.</p>
-              <div class="work-tags"><span>Node.js</span><span>JavaScript</span><span>Shopify</span><span>JSON/CSV</span><span>Rule logic</span></div>
-            </div>
-          </article>
-        </div>
+    <section class="training-section section-pad" id="training">
+      <div class="wrap training-grid">
+        <div class="training-mark" aria-hidden="true"><span>05<span>+</span></span><small>YEARS IN THE GYM</small></div>
+        <div data-reveal><p class="folio-label">05 / OUTSIDE ENGINEERING</p><h2 class="editorial-heading">Training is where I learned to <em>trust the process.</em></h2><p>I’m a CanFit-certified personal trainer and have spent more than five years in the gym. Coaching has made me better at explaining a plan, noticing when it is not working, and adjusting it without losing the goal.</p><p>The same habit shows up in my engineering work: track what happened, change one thing at a time, and keep showing up for the unglamorous repetitions.</p></div>
       </div>
     </section>
 
-    <section class="resume-section section" id="resume">
-      <div class="container resume-grid">
-        <div class="resume-copy">
-          <div class="section-index reveal"><span>05</span><em>Resume</em></div>
-          <h2 class="reveal-text">The one-page version.</h2>
-          <p class="reveal">If you want the compact timeline, technical stack, coursework, and measurable outcomes without scrolling through the whole site, this is it.</p>
-          <div class="resume-actions reveal">
-            <a class="button button-primary magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">View full resume <span>↗</span></a>
-            <a class="button button-quiet magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" download>Download PDF <span>↓</span></a>
-          </div>
-          <div class="resume-notes reveal">
-            <div><span class="mono">CURRENT</span><strong>Technology Manager · U+ Education</strong></div>
-            <div><span class="mono">EDUCATION</span><strong>B.Eng. Computer Engineering · York · 2028</strong></div>
-            <div><span class="mono">FOCUS</span><strong>Embedded systems · software · data · delivery</strong></div>
+    <section class="beyond-section section-pad" id="beyond">
+      <div class="wrap">
+        <div class="section-opening" data-reveal><p class="folio-label">06 / BEYOND THE DESK</p><div><h2 class="editorial-heading">The room is part of <em>the system.</em></h2><p class="section-deck">Technical work has also put me in front of people, behind live equipment, and in community spaces. These are real moments from that side of the job.</p></div></div>
+        <div class="archive-head" data-reveal><span>U+ / FIELD ARCHIVE</span><span>REAL PHOTOGRAPHS · THREE MOMENTS</span></div>
+        <div class="photo-essay">
+          <figure class="photo-feature" data-reveal><div class="photo-window"><img src="assets/field-note-live-av-ops.jpg" width="1200" height="900" alt="Umair at an AV control station during a live event" loading="lazy" data-photo-depth></div><figcaption><span>01 / LIVE OPERATIONS</span><p>Running AV cues and troubleshooting while an event is already underway.</p></figcaption></figure>
+          <div class="photo-pair">
+            <figure data-reveal><div class="photo-window"><img src="assets/field-note-mayors-luncheon.jpg" width="900" height="1200" alt="Umair at a community luncheon with Richmond Hill Mayor David West" loading="lazy" data-photo-depth></div><figcaption><span>02 / REPRESENTATION</span><p>Representing U+ Education at a mayor’s luncheon.</p></figcaption></figure>
+            <figure data-reveal><div class="photo-window"><img src="assets/field-note-community-recognition.jpg" width="1200" height="900" alt="Umair receiving a certificate of appreciation on behalf of U+ Education" loading="lazy" data-photo-depth></div><figcaption><span>03 / COMMUNITY</span><p>Receiving a certificate of appreciation for the organization’s work.</p></figcaption></figure>
           </div>
         </div>
-
-        <div class="resume-paper-wrap reveal" data-paper>
-          <div class="paper-shadow"></div>
-          <div class="resume-paper">
-            <div class="paper-top"><span class="mono">MOHAMMED UMAIR JIBRAN</span><span class="mono">1 / 1</span></div>
-            <iframe title="Mohammed Umair Jibran resume" src="assets/Mohammed_Umair_Jibran_Resume.pdf#view=FitH&toolbar=0&navpanes=0" loading="lazy"></iframe>
-            <a class="paper-overlay" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in a new tab"><span>open PDF ↗</span></a>
-          </div>
-        </div>
+        <div class="recognition-line" data-reveal><span>ALSO / ON RECORD</span><div class="recognition-pair"><p><b>01 / SPEAKING</b>Selected to speak for U+ Education at the OACAO Aging Well Conference.</p><p><b>02 / RECOGNITION</b>Recipient of York University’s Gordon and Agnes (Twambley) Brash Award in Engineering.</p></div></div>
       </div>
     </section>
 
-    <section class="other-work section" id="roles">
-      <div class="container">
-        <div class="section-head compact-head">
-          <div class="section-index reveal"><span>06</span><em>Elsewhere</em></div>
-          <h2 class="reveal-text">Other work that shaped how I build.</h2>
-        </div>
-        <div class="role-list">
-          <article class="role-row reveal">
-            <div class="role-date">Feb 2025 – Jan 2026</div>
-            <div><p class="role-org">Islamic Books & Souvenirs</p><h3>Software Developer & Co-Project Coordinator</h3></div>
-            <p>Turned a fulfilment problem into a deployed packaging tool, tested the rules, documented the workflow, and made it usable for non-technical staff.</p>
-          </article>
-          <article class="role-row reveal">
-            <div class="role-date">Sep 2024 – Apr 2026</div>
-            <div><p class="role-org">Muslim Student Association · York</p><h3>Technology Lead</h3></div>
-            <p>Owned the technology behind events and fundraising, including WordPress, tap-to-donate hardware, volunteer training, and live troubleshooting.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="recognition-section section" id="recognition">
-      <div class="container">
-        <div class="recognition-card reveal" data-spotlight>
-          <div class="award-aside">
-            <div class="award-seal" aria-hidden="true">
-              <span class="award-seal-ring">
-                <svg viewBox="0 0 64 64" role="img">
-                  <circle cx="32" cy="22" r="10"></circle>
-                  <path d="M14 54c2.2-11.2 9-17 18-17s15.8 5.8 18 17"></path>
-                </svg>
-              </span>
-              <i></i><b></b>
-            </div>
-            <div class="award-aside-copy"><span class="mono">AWARD / 01</span><strong>Sole engineering recipient</strong></div>
-          </div>
-          <div class="recognition-copy">
-            <div class="section-index light"><span>07</span><em>Recognition</em></div>
-            <p class="recognition-kicker"><span>★</span> Individual honour · York University</p>
-            <h2>Gordon and Agnes (Twambley) Brash Award in Engineering</h2>
-            <p>Sole engineering student recipient, recognized for academic achievement, leadership, and community involvement.</p>
-            <div class="award-signals" aria-label="Award details">
-              <span class="award-signal">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"></circle><path d="M5.5 20c.7-5 2.9-7.5 6.5-7.5S17.8 15 18.5 20"></path></svg>
-                Individual recipient
-              </span>
-              <span class="award-signal">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8v4.5a4 4 0 0 1-8 0V3Z"></path><path d="M8 5H4v1a4 4 0 0 0 4 4M16 5h4v1a4 4 0 0 1-4 4M12 12v5M8 21h8M9 17h6"></path></svg>
-                Engineering award
-              </span>
-            </div>
-          </div>
-          <div class="award-number" aria-hidden="true">01</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="capabilities section" id="skills">
-      <div class="container capabilities-grid">
-        <div class="capabilities-heading">
-          <div class="section-index reveal"><span>08</span><em>Skills</em></div>
-          <h2 class="reveal-text">Comfortable moving between the stack and the room.</h2>
-          <p class="reveal">The useful part is not knowing every tool. It is knowing which layer is actually causing the problem.</p>
-        </div>
-        <div class="capability-list">
-          <article class="capability reveal"><span class="capability-index mono">01</span><div><h3>Systems & embedded</h3><p>C, C++, STM32, Arduino, FreeRTOS, CAN-FD, UART, SPI, I²C, 433 MHz RF, hardware-software debugging.</p></div></article>
-          <article class="capability reveal"><span class="capability-index mono">02</span><div><h3>Software & data</h3><p>Python, Java, JavaScript, SQL, Node.js, REST APIs, PostgreSQL, MySQL, Prisma, Power BI, Tableau, Excel, JSON/CSV processing.</p></div></article>
-          <article class="capability reveal"><span class="capability-index mono">03</span><div><h3>Program delivery</h3><p>Requirements, project plans, schedules, milestones, budgets, risks, issue tracking, process documentation, technical reporting, Jira, GitHub, Docker.</p></div></article>
-          <article class="capability reveal"><span class="capability-index mono">04</span><div><h3>Leadership in the room</h3><p>Team priorities, meetings, presentations, volunteer supervision, technical feedback, stakeholder communication, and calm troubleshooting.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="bench-rules section" id="approach">
-      <div class="container">
-        <div class="bench-rules-shell reveal" data-rule-map data-spotlight>
-          <div class="bench-rules-head">
-            <div class="section-index light"><span>09</span><em>Bench rules</em></div>
-            <p class="mono">MY DEFINITION OF “DONE”</p>
-            <h2>It has to work for someone who was not in the room when it was built.</h2>
-          </div>
-          <div class="rule-map">
-            <article class="bench-rule" data-bench-rule>
-              <span class="mono">01 / TRACE</span>
-              <h3>Follow the whole path.</h3>
-              <p>From sensor or click to validation, state, output, and the person waiting on the other side.</p>
-            </article>
-            <article class="bench-rule" data-bench-rule>
-              <span class="mono">02 / BREAK</span>
-              <h3>Test the awkward case.</h3>
-              <p>Dropped frames, bad input, missing data, rushed volunteers—the failure path belongs in the design.</p>
-            </article>
-            <article class="bench-rule" data-bench-rule>
-              <span class="mono">03 / EXPLAIN</span>
-              <h3>Leave a readable trail.</h3>
-              <p>A useful status, a clear log, and a short handoff beat a clever system nobody else can operate.</p>
-            </article>
-            <article class="bench-rule" data-bench-rule>
-              <span class="mono">04 / SHIP</span>
-              <h3>Name what is unfinished.</h3>
-              <p>The honest prototype is more valuable than a polished claim. Limits and next tests stay visible.</p>
-            </article>
-            <i class="rule-pulse" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section section" id="contact">
-      <div class="container">
-        <div class="contact-shell reveal" data-spotlight>
-          <div class="contact-copy">
-            <div class="section-index light"><span>10</span><em>Contact</em></div>
-            <h2>Got a problem that crosses layers?</h2>
-            <p>Embedded, software, data, delivery — or the awkward space where all four meet.</p>
-            <div class="contact-status"><i></i><span>Toronto, Ontario</span></div>
-          </div>
-          <div class="contact-panel">
-            <a class="contact-email magnetic" href="mailto:umairmohammed26@gmail.com">
-              <span><small>Email</small><strong>umairmohammed26@gmail.com</strong></span><b>↗</b>
-            </a>
-            <a class="contact-resume magnetic" href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">
-              <span><small>Resume</small><strong>Open the one-page PDF</strong></span><b>↗</b>
-            </a>
-            <p class="contact-note">Phone and professional links are included on the resume.</p>
-          </div>
-        </div>
+    <section class="closing-section section-pad" id="contact">
+      <div class="wrap closing-grid">
+        <div><p class="folio-label">07 / CONTACT</p><h2>Have a problem that crosses <em>layers?</em></h2><p>Embedded systems, software, lab testing, project delivery, or the awkward space between them.</p></div>
+        <div class="contact-links"><a href="mailto:umairmohammed26@gmail.com">Email me <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/mohammed-umair-jibran-87932a2a7/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://github.com/mjumair7/" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><a href="assets/Mohammed_Umair_Jibran_Resume.pdf" target="_blank" rel="noopener">Resume PDF <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-inner"><span>© <span id="yy"></span> Mohammed Umair Jibran</span><span class="mono">STUDENT ENGINEER / WORK IN PROGRESS</span></div>
-  </footer>
-
-  <script src="systems-console.js?v=20261014-responsive-signal"></script>
+  <footer class="site-footer"><div class="wrap"><span>© <span data-year>2026</span> Mohammed Umair Jibran</span><span>Student engineer / work in progress</span><a href="AI_USE.md">AI &amp; automation note <span aria-hidden="true">↗</span></a><a href="#top">Back to top ↑</a></div></footer>
 </body>
 </html>

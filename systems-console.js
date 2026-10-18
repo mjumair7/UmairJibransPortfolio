@@ -1,504 +1,203 @@
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+"use strict";
 
-// Mobile navigation
-const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
-burger?.addEventListener('click', () => {
-  const open = burger.getAttribute('aria-expanded') === 'true';
-  burger.setAttribute('aria-expanded', String(!open));
-  navLinks?.classList.toggle('is-open', !open);
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const menuButton = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".nav-links");
+
+function closeMenu(returnFocus = false) {
+  if (!menuButton || !menu) return;
+  menuButton.setAttribute("aria-expanded", "false");
+  menu.classList.remove("is-open");
+  document.body.classList.remove("menu-open");
+  if (returnFocus) menuButton.focus();
+}
+
+menuButton?.addEventListener("click", () => {
+  const open = menuButton.getAttribute("aria-expanded") !== "true";
+  menuButton.setAttribute("aria-expanded", String(open));
+  menu?.classList.toggle("is-open", open);
+  document.body.classList.toggle("menu-open", open);
+  if (open) menu?.querySelector("a")?.focus();
+});
+menu?.querySelectorAll("a").forEach(link => link.addEventListener("click", () => closeMenu()));
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") closeMenu(true);
+});
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 900) closeMenu();
 });
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', event => {
-    const target = document.querySelector(link.getAttribute('href'));
-    if (!target) return;
-    event.preventDefault();
-    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-    navLinks?.classList.remove('is-open');
-    burger?.setAttribute('aria-expanded', 'false');
-  });
-});
+const year = document.querySelector("[data-year]");
+if (year) year.textContent = String(new Date().getFullYear());
 
-const year = document.getElementById('yy');
-if (year) year.textContent = new Date().getFullYear();
+const progress = document.querySelector(".reading-progress span");
+let progressQueued = false;
+function updateProgress() {
+  progressQueued = false;
+  if (!progress) return;
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
+}
+function queueProgress() {
+  if (progressQueued) return;
+  progressQueued = true;
+  requestAnimationFrame(updateProgress);
+}
+window.addEventListener("scroll", queueProgress, { passive: true });
+window.addEventListener("resize", queueProgress);
+queueProgress();
 
-// Local clock — a tiny detail that keeps the hero feeling alive.
-const clock = document.querySelector('[data-clock]');
-const updateClock = () => {
-  if (!clock) return;
-  clock.textContent = new Intl.DateTimeFormat('en-CA', {
-    hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
-  }).format(new Date());
-};
-updateClock();
-window.setInterval(updateClock, 1000);
-
-// Reveal without a third-party animation library.
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('on');
-    revealObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
-
-document.querySelectorAll('.reveal, .reveal-text').forEach(el => revealObserver.observe(el));
-
-// The navigation behaves like a chapter marker instead of a generic sticky menu.
-const navbar = document.querySelector('.navbar');
-const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-const chapterCurrent = document.querySelector('[data-chapter-current]');
-const chapterNames = {
-  experience: '02 / EXPERIENCE',
-  moments: '03 / IN THE ROOM',
-  projects: '04 / PROJECTS',
-  resume: '05 / RESUME',
-  skills: '08 / SKILLS',
-  approach: '09 / BENCH RULES',
-  contact: '10 / CONTACT'
-};
-const linkedSections = sectionLinks
-  .map(link => document.querySelector(link.getAttribute('href')))
-  .filter(Boolean);
-const chapterObserver = new IntersectionObserver(entries => {
-  const visible = entries
-    .filter(entry => entry.isIntersecting)
-    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-  if (!visible) return;
-  if (chapterCurrent) chapterCurrent.textContent = chapterNames[visible.target.id] || '00 / TOP';
-  sectionLinks.forEach(link => {
-    const current = link.getAttribute('href') === `#${visible.target.id}`;
-    link.classList.toggle('is-current', current);
-    if (current) link.setAttribute('aria-current', 'location');
-    else link.removeAttribute('aria-current');
-  });
-}, { threshold: 0.01, rootMargin: '-18% 0px -58% 0px' });
-linkedSections.forEach(section => chapterObserver.observe(section));
-
-// Scroll progress + ticker that reacts to scroll direction.
-const progress = document.querySelector('.scroll-progress i');
-const chapterProgress = document.querySelector('[data-chapter-progress]');
-const ticker = document.querySelector('[data-ticker]');
-let lastY = window.scrollY;
-let tickerX = 0;
-let scrollDirection = 1;
-
-const onScroll = () => {
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  const ratio = max > 0 ? window.scrollY / max : 0;
-  if (progress) progress.style.transform = `scaleX(${ratio})`;
-  if (chapterProgress) chapterProgress.style.transform = `scaleY(${ratio})`;
-  navbar?.classList.toggle('is-scrolled', window.scrollY > 42);
-  if (!reduceMotion) {
-    document.documentElement.style.setProperty('--hero-y', `${Math.min(52, window.scrollY * .075)}px`);
+// A small depth shift keeps the real event photos feeling like objects in the
+// field archive. It is limited to visible images and disabled for reduced motion.
+if (!reduceMotion.matches) {
+  const photos = [...document.querySelectorAll("[data-photo-depth]")];
+  let photoFrame = 0;
+  function updatePhotoDepth() {
+    photoFrame = 0;
+    const viewportMiddle = window.innerHeight / 2;
+    photos.forEach(photo => {
+      const box = photo.parentElement.getBoundingClientRect();
+      if (box.bottom < 0 || box.top > window.innerHeight) return;
+      const distance = (box.top + box.height / 2 - viewportMiddle) / window.innerHeight;
+      const shift = Math.max(-16, Math.min(16, -distance * 24));
+      photo.style.setProperty("--photo-y", `${shift.toFixed(1)}px`);
+    });
   }
-  scrollDirection = window.scrollY >= lastY ? 1 : -1;
-  lastY = window.scrollY;
-};
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
-
-const tick = () => {
-  if (ticker && !reduceMotion) {
-    tickerX -= 0.34 * scrollDirection;
-    const half = ticker.scrollWidth / 2;
-    if (Math.abs(tickerX) > half) tickerX = 0;
-    ticker.style.transform = `translate3d(${tickerX}px,0,0)`;
+  function queuePhotoDepth() {
+    if (!photoFrame) photoFrame = requestAnimationFrame(updatePhotoDepth);
   }
-  requestAnimationFrame(tick);
-};
-requestAnimationFrame(tick);
-
-// Timeline fills as chapters cross the reading zone.
-const timelineSteps = [...document.querySelectorAll('.timeline-step')];
-const timelineProgress = document.querySelector('.timeline-progress');
-const timelineMeter = document.querySelector('[data-timeline-meter]');
-const timelineObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const index = timelineSteps.indexOf(entry.target);
-    timelineSteps.forEach((step, i) => step.classList.toggle('is-active', i <= index));
-    const pct = timelineSteps.length <= 1 ? 100 : 8 + (index / (timelineSteps.length - 1)) * 92;
-    if (timelineProgress) timelineProgress.style.height = `${pct}%`;
-    if (timelineMeter) timelineMeter.style.width = `${pct}%`;
-  });
-}, { threshold: 0.5, rootMargin: '-10% 0px -30% 0px' });
-timelineSteps.forEach(step => timelineObserver.observe(step));
-
-// Pointer spotlight and restrained 3D movement. Disabled on touch/reduced-motion.
-const finePointer = window.matchMedia('(pointer:fine)').matches;
-if (finePointer && !reduceMotion) {
-  const beacon = document.querySelector('.cursor-beacon');
-  let beaconX = -60;
-  let beaconY = -60;
-  let targetX = -60;
-  let targetY = -60;
-  const moveBeacon = () => {
-    beaconX += (targetX - beaconX) * 0.18;
-    beaconY += (targetY - beaconY) * 0.18;
-    if (beacon) beacon.style.transform = `translate3d(${beaconX - beacon.offsetWidth / 2}px,${beaconY - beacon.offsetHeight / 2}px,0)`;
-    requestAnimationFrame(moveBeacon);
-  };
-  window.addEventListener('pointermove', event => {
-    targetX = event.clientX;
-    targetY = event.clientY;
-    beacon?.classList.add('is-visible');
-  }, { passive: true });
-  document.querySelectorAll('a, button, select, [data-tilt]').forEach(el => {
-    el.addEventListener('pointerenter', () => beacon?.classList.add('is-over'));
-    el.addEventListener('pointerleave', () => beacon?.classList.remove('is-over'));
-  });
-  requestAnimationFrame(moveBeacon);
-
-  document.querySelectorAll('[data-spotlight]').forEach(el => {
-    el.addEventListener('pointermove', event => {
-      const rect = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${event.clientX - rect.left}px`);
-      el.style.setProperty('--my', `${event.clientY - rect.top}px`);
-    });
-  });
-
-  document.querySelectorAll('.signal-card[data-tilt]').forEach(card => {
-    card.addEventListener('pointermove', event => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `perspective(1000px) rotateX(${-y * 2.1}deg) rotateY(${x * 2.5}deg) translateY(-2px)`;
-    });
-    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
-  });
-
-  document.querySelectorAll('.magnetic').forEach(el => {
-    el.addEventListener('pointermove', event => {
-      const rect = el.getBoundingClientRect();
-      const x = event.clientX - (rect.left + rect.width / 2);
-      const y = event.clientY - (rect.top + rect.height / 2);
-      el.style.transform = `translate(${x * 0.07}px, ${y * 0.09}px)`;
-    });
-    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-  });
+  window.addEventListener("scroll", queuePhotoDepth, { passive: true });
+  window.addEventListener("resize", queuePhotoDepth);
+  queuePhotoDepth();
 }
 
-// The bench rules light up in sequence when the section enters the reading zone.
-for (const map of document.querySelectorAll('[data-rule-map]')) {
-  const rules = [...map.querySelectorAll('[data-bench-rule]')];
-  map.classList.add('is-sequenced');
-  const ruleObserver = new IntersectionObserver(entries => {
-    if (!entries.some(entry => entry.isIntersecting)) return;
-    rules.forEach((rule, index) => {
-      window.setTimeout(() => rule.classList.add('is-ready'), reduceMotion ? 0 : index * 110);
-    });
-    ruleObserver.disconnect();
-  }, { threshold: 0.28 });
-  ruleObserver.observe(map);
-}
-
-// SentriCode miniature: a short scan narrative with deliberate, staged state changes.
-for (const demo of document.querySelectorAll('[data-sentricode-demo]')) {
-  const button = demo.querySelector('[data-sentri-run]');
-  const state = demo.querySelector('[data-sentri-state]');
-  const score = demo.querySelector('[data-sentri-score]');
-  const critical = demo.querySelector('[data-sentri-critical]');
-  const high = demo.querySelector('[data-sentri-high]');
-  const medium = demo.querySelector('[data-sentri-medium]');
-  const count = demo.querySelector('[data-sentri-count]');
-  const finding = demo.querySelector('[data-sentri-finding]');
-  const progressLine = demo.querySelector('[data-sentri-progress]');
-  const log = demo.querySelector('[data-sentri-log]');
-  let running = false;
-
-  const finish = () => {
-    demo.classList.remove('is-scanning');
-    demo.classList.add('is-complete');
-    state.textContent = 'Complete';
-    score.textContent = '93';
-    critical.textContent = '0';
-    high.textContent = '0';
-    medium.textContent = '1';
-    count.textContent = '1';
-    log.textContent = '42 files checked · 1 decision remains';
-    finding.innerHTML = '<div class="finding-severity">MED</div><div><small>DEPENDENCY INVENTORY · PYTHON</small><strong>One package is behind the approved baseline</strong><p>Upgrade is available. The finding stays tracked until the next scan confirms it.</p></div><span class="finding-status">Track</span>';
-    button.textContent = 'Scan again';
-    button.disabled = false;
-    running = false;
-  };
-
-  button?.addEventListener('click', () => {
-    if (running) return;
-    running = true;
-    demo.classList.remove('is-complete');
-    demo.classList.add('is-scanning');
-    button.disabled = true;
-    button.textContent = 'Scanning…';
-    state.textContent = 'Scanning';
-    score.textContent = '—';
-    critical.textContent = '·';
-    high.textContent = '·';
-    medium.textContent = '·';
-    count.textContent = '…';
-    progressLine.style.width = '0';
-    log.textContent = 'Indexing source and manifests…';
-    requestAnimationFrame(() => { progressLine.style.width = '100%'; });
-
-    const duration = reduceMotion ? 60 : 1350;
-    if (!reduceMotion) {
-      window.setTimeout(() => { log.textContent = 'Checking secrets and sensitive logging…'; }, 390);
-      window.setTimeout(() => { log.textContent = 'Building dependency inventory and policy result…'; }, 810);
-    }
-    window.setTimeout(finish, duration);
-  });
-}
-
-// Hero system map: each layer tells a different part of the same delivery story.
-const signalLabel = document.querySelector('[data-signal-label]');
-const signalCode = document.querySelector('[data-signal-code]');
-const signalTitle = document.querySelector('[data-signal-title]');
-const signalCopy = document.querySelector('[data-signal-copy]');
-const trace = document.querySelector('[data-trace]');
-const signalStories = {
-  Embedded: {
-    code: 'HW',
-    title: 'Inputs you can measure',
-    copy: 'Sensors, buses, timing, and failure modes become observable instead of mysterious.'
-  },
-  Software: {
-    code: 'SW',
-    title: 'State you can explain',
-    copy: 'Interfaces and tools surface what happened, why it matters, and what to do next.'
-  },
-  People: {
-    code: 'PX',
-    title: 'Handoffs that survive',
-    copy: 'The system stays useful for the teammate or volunteer who was not in the build room.'
-  },
-  Delivery: {
-    code: 'OPS',
-    title: 'Work that reaches reality',
-    copy: 'Constraints, risks, and edge cases get resolved before the live moment depends on them.'
-  }
-};
-const signalNodes = [...document.querySelectorAll('[data-signal-node]')];
-signalNodes.forEach(node => {
-  node.setAttribute('aria-pressed', 'false');
-  node.addEventListener('click', () => {
-    const story = signalStories[node.dataset.signalNode];
-    signalNodes.forEach(item => {
-      item.classList.remove('is-active');
-      item.setAttribute('aria-pressed', 'false');
-    });
-    node.classList.add('is-active');
-    node.setAttribute('aria-pressed', 'true');
-    if (signalLabel) signalLabel.textContent = node.dataset.signalNode.toLowerCase();
-    if (signalCode) signalCode.textContent = story.code;
-    if (signalTitle) signalTitle.textContent = story.title;
-    if (signalCopy) signalCopy.textContent = story.copy;
-    if (trace && !reduceMotion) {
-      trace.animate([
-        { strokeDashoffset: '0', opacity: 1 },
-        { strokeDashoffset: '-40', opacity: .45 },
-        { strokeDashoffset: '-80', opacity: 1 }
-      ], { duration: 520, easing: 'ease-out' });
-    }
-  });
-});
-
-// The project directory behaves like a live case-file index while scrolling.
-const projectLinks = [...document.querySelectorAll('[data-project-link]')];
-const projectCards = projectLinks
-  .map(link => document.getElementById(link.dataset.projectLink))
-  .filter(Boolean);
-if (projectCards.length) {
-  const projectObserver = new IntersectionObserver(entries => {
-    const current = entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (!current) return;
-    projectLinks.forEach(link => {
-      const active = link.dataset.projectLink === current.target.id;
-      link.classList.toggle('is-current', active);
-      if (active) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-  }, { threshold: 0.08, rootMargin: '-18% 0px -48% 0px' });
-  projectCards.forEach(card => projectObserver.observe(card));
-}
-
-
-// Field-notes section: active story + gentle scroll-driven photo movement.
-const momentStories = [...document.querySelectorAll('[data-moment]')];
-const momentCurrent = document.querySelector('[data-moment-current]');
-const momentsMeter = document.querySelector('[data-moments-meter]');
-if (momentStories.length) {
-  const momentObserver = new IntersectionObserver(entries => {
+// Only hide sections when the browser can reveal them again.
+if ("IntersectionObserver" in window && !reduceMotion.matches) {
+  document.documentElement.classList.add("js-motion");
+  const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const index = momentStories.indexOf(entry.target);
-      momentStories.forEach((story, i) => story.classList.toggle('is-current', i === index));
-      if (momentCurrent) momentCurrent.textContent = String(index + 1).padStart(2, '0');
-      if (momentsMeter) momentsMeter.style.width = `${((index + 1) / momentStories.length) * 100}%`;
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
     });
-  }, { threshold: 0.48, rootMargin: '-15% 0px -28% 0px' });
-  momentStories.forEach(story => momentObserver.observe(story));
+  }, { rootMargin: "0px 0px -6% 0px", threshold: .06 });
+  document.querySelectorAll("[data-reveal]").forEach(element => revealObserver.observe(element));
 }
 
-const parallaxFrames = [...document.querySelectorAll('[data-moment-parallax]')];
-let momentParallaxQueued = false;
-const updateMomentParallax = () => {
-  momentParallaxQueued = false;
-  if (reduceMotion) return;
-  parallaxFrames.forEach(frame => {
-    const rect = frame.getBoundingClientRect();
-    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-    const centerDelta = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
-    const y = Math.max(-18, Math.min(18, centerDelta * -28));
-    frame.style.setProperty('--photo-y', `${y}px`);
-  });
+const routeCopy = document.querySelector("[data-route-copy]");
+const routeText = {
+  "01": "Start with the actual input: a signal, a user need, or the thing that keeps going wrong.",
+  "02": "Build a small real slice so the constraint shows up in working code or hardware.",
+  "03": "Try the missing frame, bad packet, awkward user path, and second run.",
+  "04": "Leave an explanation the next person can follow without standing beside me."
 };
-const queueMomentParallax = () => {
-  if (momentParallaxQueued) return;
-  momentParallaxQueued = true;
-  requestAnimationFrame(updateMomentParallax);
+document.querySelectorAll("[data-route]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-route]").forEach(item => {
+      const active = item === button;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    document.querySelector(".system-figure")?.setAttribute("data-active", button.dataset.route);
+    if (routeCopy) routeCopy.textContent = routeText[button.dataset.route] || "";
+  });
+});
+
+// The instrument surfaces respond to a pointer only when there is a precise
+// pointer and motion is allowed. Touch and keyboard users get the same content.
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !reduceMotion.matches) {
+  document.querySelectorAll("[data-depth-scene]").forEach(scene => {
+    let frame = 0;
+    scene.addEventListener("pointermove", event => {
+      if (event.pointerType !== "mouse") return;
+      const bounds = scene.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - .5) * 2;
+      const y = ((event.clientY - bounds.top) / bounds.height - .5) * 2;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        scene.style.setProperty("--tilt-x", `${(-y * 3).toFixed(2)}deg`);
+        scene.style.setProperty("--tilt-y", `${(x * 5).toFixed(2)}deg`);
+      });
+    });
+    scene.addEventListener("pointerleave", () => {
+      cancelAnimationFrame(frame);
+      scene.style.setProperty("--tilt-x", "0deg");
+      scene.style.setProperty("--tilt-y", "0deg");
+    });
+  });
+}
+
+const canDemo = document.querySelector("[data-can-demo]");
+if (canDemo) {
+  const state = canDemo.querySelector("[data-can-state]");
+  const output = canDemo.querySelector("[data-can-output]");
+  const detail = canDemo.querySelector("[data-can-detail]");
+  const log = canDemo.querySelector("[data-can-log]");
+  canDemo.querySelectorAll("[data-can-mode]").forEach(button => {
+    button.addEventListener("click", () => {
+      const fault = button.dataset.canMode === "fault";
+      canDemo.classList.toggle("is-fault", fault);
+      canDemo.querySelectorAll("[data-can-mode]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+      if (state) state.textContent = fault ? "TIMEOUT / FAIL-SAFE" : "NORMAL FRAMES";
+      if (output) output.textContent = fault ? "FAN SAFE OFF" : "FAN 42%";
+      if (detail) detail.textContent = fault ? "stale frame rejected" : "fresh frame accepted";
+      if (log) log.textContent = fault ? "0x244 / RPM TIMEOUT / ACTUATOR SAFE" : "0x244 / RPM 1240 / CRC OK";
+    });
+  });
+}
+
+const rfDemo = document.querySelector("[data-rf-demo]");
+if (rfDemo) {
+  const tag = rfDemo.querySelector('[data-rf-tag="2"]');
+  const status = tag?.querySelector("span");
+  const summary = rfDemo.querySelector("[data-rf-summary]");
+  rfDemo.querySelectorAll("[data-rf-mode]").forEach(button => {
+    button.addEventListener("click", () => {
+      const fault = button.dataset.rfMode === "fault";
+      tag?.classList.toggle("is-missing", fault);
+      if (status) status.textContent = fault ? "TIMEOUT / RETRY" : "CRC OK";
+      if (summary) summary.textContent = fault ? "1 TAG NEEDS REVIEW" : "3 TAGS SEEN";
+    });
+  });
+}
+
+const orders = {
+  books: { package: "Mailer M2", steps: "Wrap books · Add bookmark · Print label" },
+  gift: { package: "Gift Box G1", steps: "Add insert · Add greeting card · Seal box" },
+  bulk: { package: "Carton B3", steps: "Stack books · Add corner pads · Print label" }
 };
-window.addEventListener('scroll', queueMomentParallax, { passive: true });
-window.addEventListener('resize', queueMomentParallax);
-queueMomentParallax();
+const orderDemo = document.querySelector("[data-order-demo]");
+orderDemo?.querySelector("[data-order-run]")?.addEventListener("click", () => {
+  const selected = orderDemo.querySelector("[data-order-select]")?.value;
+  const result = orders[selected];
+  if (!result) return;
+  orderDemo.querySelector("[data-order-package]").textContent = result.package;
+  orderDemo.querySelector("[data-order-steps]").textContent = result.steps;
+});
 
-// CAN-FD test bench demo
-for (const demo of document.querySelectorAll('[data-can-demo]')) {
-  const state = demo.querySelector('[data-can-state]');
-  const actuatorText = demo.querySelector('[data-can-actuator-text]');
-  const log = demo.querySelector('[data-can-log]');
-  const render = mode => {
-    demo.classList.toggle('is-fault', mode === 'fault');
-    if (mode === 'fault') {
-      state.textContent = 'Fail-safe active';
-      actuatorText.textContent = 'Fan output: SAFE OFF';
-      log.innerHTML = '<span>0x181 TEMP 24.5 CRC OK</span><span>0x244 RPM TIMEOUT</span><span>0x310 FAIL-SAFE ACTIVE</span>';
-      return;
-    }
-    if (mode === 'run') {
-      state.textContent = 'Streaming';
-      actuatorText.textContent = 'Fan output: 46%';
-      log.innerHTML = '<span>0x181 TEMP 24.4 CRC OK</span><span>0x244 RPM 1310 CRC OK</span><span>0x310 FAN 46% ACK</span>';
-      return;
-    }
-    state.textContent = 'Normal';
-    actuatorText.textContent = 'Fan output: 42%';
-    log.innerHTML = '<span>0x181 TEMP 24.2 CRC OK</span><span>0x244 RPM 1240 CRC OK</span><span>0x310 FAN 42% ACK</span>';
-  };
-  demo.querySelectorAll('[data-can-action]').forEach(button => button.addEventListener('click', () => render(button.dataset.canAction)));
-}
-
-// RF asset finder demo
-for (const demo of document.querySelectorAll('[data-rf-demo]')) {
-  const tags = [...demo.querySelectorAll('[data-rf-tag]')];
-  const summary = demo.querySelector('[data-rf-summary]');
-  const reset = () => {
-    tags.forEach((tag, index) => {
-      tag.classList.remove('is-missing');
-      tag.querySelector('span').textContent = `Seen ${(0.2 + index * 0.2).toFixed(1)}s ago`;
+// The index follows the case currently in the reading area.
+if ("IntersectionObserver" in window) {
+  const caseLinks = [...document.querySelectorAll("[data-case-link]")];
+  const caseObserver = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    caseLinks.forEach(link => {
+      const active = link.dataset.caseLink === visible.target.id;
+      link.classList.toggle("is-active", active);
+      if (active) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
     });
-    summary.textContent = '3 tags online';
-  };
-  demo.querySelectorAll('[data-rf-action]').forEach(button => {
-    button.addEventListener('click', () => {
-      const action = button.dataset.rfAction;
-      if (action === 'missing') {
-        reset();
-        tags[1].classList.add('is-missing');
-        tags[1].querySelector('span').textContent = 'Timeout exceeded';
-        summary.textContent = '1 alert';
-        return;
-      }
-      if (action === 'scan') {
-        reset();
-        demo.classList.remove('is-scanning');
-        void demo.offsetWidth;
-        demo.classList.add('is-scanning');
-        summary.textContent = 'Scanning...';
-        window.setTimeout(() => {
-          summary.textContent = '3 tags online';
-          demo.classList.remove('is-scanning');
-        }, 850);
-        return;
-      }
-      reset();
+  }, { rootMargin: "-20% 0px -45% 0px", threshold: [0, .1, .35] });
+  document.querySelectorAll(".case-study").forEach(study => caseObserver.observe(study));
+
+  const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+  const navObserver = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === `#${visible.target.id}`) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
     });
-  });
-}
-
-// Tap-to-donate visual simulation
-for (const demo of document.querySelectorAll('[data-payment-demo]')) {
-  let selectedAmount = null;
-  const screen = demo.querySelector('[data-payment-screen]');
-  const amountButtons = [...demo.querySelectorAll('[data-amount]')];
-  const setScreen = (title, detail, approved = false) => {
-    screen.classList.toggle('is-approved', approved);
-    screen.innerHTML = `<small>DEMO TERMINAL</small><strong>${title}</strong><span>${detail}</span>`;
-  };
-  amountButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      selectedAmount = Number(button.dataset.amount);
-      amountButtons.forEach(item => item.classList.toggle('is-selected', item === button));
-      setScreen(`$${selectedAmount}.00`, 'Ready for simulated tap');
-    });
-  });
-  demo.querySelector('[data-payment-tap]')?.addEventListener('click', () => {
-    if (!selectedAmount) return setScreen('Select amount', 'Choose a sample donation first');
-    setScreen('Reading card...', 'Simulated terminal flow');
-    window.setTimeout(() => setScreen('Approved', `$${selectedAmount}.00 demo payment`, true), 650);
-  });
-}
-
-// Split workout demo
-for (const demo of document.querySelectorAll('[data-split-demo]')) {
-  let weight = 84;
-  const output = demo.querySelector('[data-split-output]');
-  const chartValue = demo.querySelector('[data-split-weight]');
-  const currentBar = demo.querySelector('.current-bar');
-  const message = demo.querySelector('[data-split-message]');
-  const updateWeight = () => {
-    output.textContent = `${weight} kg × 5`;
-    chartValue.textContent = weight;
-    currentBar.style.setProperty('--bar', `${Math.min(96, 48 + (weight - 65) * 2)}%`);
-    message.textContent = 'Adjust the weight and log a set.';
-  };
-  demo.querySelectorAll('[data-weight-action]').forEach(button => {
-    button.addEventListener('click', () => {
-      weight += button.dataset.weightAction === 'up' ? 1 : -1;
-      weight = Math.max(20, Math.min(120, weight));
-      updateWeight();
-    });
-  });
-  demo.querySelector('[data-log-set]')?.addEventListener('click', () => {
-    message.textContent = `${weight} kg × 5 saved to the sample session.`;
-  });
-}
-
-// Personal detail beside Split
-for (const button of document.querySelectorAll('[data-split-easter-egg]')) {
-  const wrapper = button.closest('.split-easter-wrap');
-  const secret = wrapper?.querySelector('[data-split-secret]');
-  if (!secret) continue;
-  button.addEventListener('click', () => {
-    const open = wrapper.classList.toggle('is-revealed');
-    button.setAttribute('aria-expanded', String(open));
-    secret.setAttribute('aria-hidden', String(!open));
-  });
-}
-
-// Shopify order analyzer demo
-const sampleOrders = {
-  1048: { package: 'Mailer M2', steps: 'Wrap books · Add bookmark · Print label' },
-  1052: { package: 'Gift Box G1', steps: 'Add insert · Add greeting card · Seal box' },
-  1061: { package: 'Carton B3', steps: 'Stack books · Add corner pads · Print label' }
-};
-for (const demo of document.querySelectorAll('[data-order-demo]')) {
-  const select = demo.querySelector('[data-order-select]');
-  const output = demo.querySelector('[data-order-output]');
-  demo.querySelector('[data-order-run]')?.addEventListener('click', () => {
-    const order = sampleOrders[select.value];
-    output.innerHTML = `<small>PACKING INSTRUCTION</small><strong>${order.package}</strong><span>${order.steps}</span>`;
-  });
+  }, { rootMargin: "-18% 0px -60% 0px", threshold: 0 });
+  document.querySelectorAll("#work, #lab, #current, #training, #beyond, #contact").forEach(section => navObserver.observe(section));
 }

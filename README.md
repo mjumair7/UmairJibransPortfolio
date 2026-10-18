@@ -2,7 +2,9 @@
 
 Computer Engineering student at York University and Technology Manager at U+ Education. I work where hardware, software, data, and delivery stop being separate problems.
 
-**[Open the live portfolio](https://mjumair7.github.io/UmairJibransPortfolio/)** · **[LinkedIn](https://www.linkedin.com/in/mohammed-umair-jibran-87932a2a7/)**
+**[Open the portfolio](https://mjumair7.github.io/UmairJibransPortfolio/)** · **[LinkedIn](https://www.linkedin.com/in/mohammed-umair-jibran-87932a2a7/)**
+
+To run the site locally, use `python3 -m http.server 4173` from this directory and open `http://127.0.0.1:4173/`.
 
 ```text
 sensor / user input
@@ -27,7 +29,7 @@ sensor / user input
 | Tap-to-Donate | A volunteer-friendly interface with a strict server-side payment boundary | [Open](https://github.com/mjumair7/tap-to-donate-terminal) |
 | Packing Rule Engine | Turning order and product data into deterministic packing instructions | [Open](https://github.com/mjumair7/shopify-packing-rule-engine) |
 
-The live site includes small interactive explanations for the work. The RF demo can mark a tag missing, the payment terminal stays in mock/test mode, and the other demos expose the decision logic behind each project.
+The site has small interaction models for the CAN-FD bench, RF Asset Finder, and packing rules. They explain state and decision logic using sample data; they are not product screenshots or live integrations.
 
 ## What I work with
 
@@ -49,6 +51,6 @@ I am most interested in embedded systems, hardware-software integration, backend
 
 ## About this repository
 
-The site is plain HTML, CSS, and JavaScript so the implementation stays inspectable. There is no framework build step. Open `index.html` locally or visit the GitHub Pages link above.
+The site is plain HTML, CSS, and JavaScript so the implementation stays inspectable. There is no framework build step. Open `index.html` locally or serve this directory as described above.
 
-The site is deliberately framework-free: three files, no build step, and no animation dependency. Project limits and next steps stay visible because they are part of the engineering story.
+The site is deliberately framework-free: no build step and no animation dependency. It supports reduced motion, keyboard navigation, and touch. Project limits and next steps stay visible because they are part of the engineering story. See [AI_USE.md](AI_USE.md) for an honest note on AI and automation.
